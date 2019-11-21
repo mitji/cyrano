@@ -112,6 +112,9 @@ starter-code/
     │   └── signup.hbs
     ├── error.hbs
     ├── index.hbs
+    ├── layouts
+    │   ├── layout.hbs
+    |		└── user-layout.hbs
     ├── user
     │   ├── home.hbs
     │   ├── random.hbs
@@ -119,7 +122,7 @@ starter-code/
     │   ├── profile.hbs
     │   ├── search.hbs
     |		└── edit-profile.hbs
-    └── layout.hbs
+
 ```
 
 
