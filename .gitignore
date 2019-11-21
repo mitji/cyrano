@@ -1,0 +1,8 @@
+# Dependency directory
+node_modules
+
+# Environment variables should never be published
+.env
+
+# Debug log from npm
+npm-debug.log
