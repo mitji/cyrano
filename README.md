@@ -74,6 +74,7 @@ Quote model
   text: String,
   author: userId,
   likes: [userId],
+  lagnuage: String,
   type: String
 }
 
