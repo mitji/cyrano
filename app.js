@@ -1,13 +1,26 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+const app = express();
+
+
+
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+require('dotenv').config();
+
+// CONNECT TO DB
+mongoose
+  .connect('mongodb://localhost:27017/cyranoDb',{ useNewUrlParser:true})
+  .then(()=> console.log('Mongodb connected'))
+  .catch( err => console.log('error connecting to MongoDb',err));
+
+app.use(logger('dev'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,12 +32,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ROUTES
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  const err = new Error('Not found');
+  err.status = 404;
+  next(err);
 });
 
 // error handler
