@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const quoteSchema = new Schema({
   text: String,
-  author: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+  author: { type: Schema.Types.ObjectId, ref: 'User'},
   likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
   language: String,
   type: String

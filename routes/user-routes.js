@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
+const homeRouter = require("./home");
 
-
+router.use('/home', homeRouter);
 
 // USE (HORIZONTAL)
 const isLoggedIn = (req, res, next) => {
