@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const users = [
   {
-    name: 'Erik',
+    username: 'Erik',
     email: 'erik@gmail.cat',
     password: 'Erik',
     pictureUrl: 'https://cdn5.vectorstock.com/i/1000x1000/23/49/new-man-avatar-icon-flat-vector-19152349.jpg',
@@ -13,7 +13,7 @@ const users = [
     liked: [], 
   },
   {
-    name: 'David',
+    username: 'David',
     email: 'david@gmail.cat',
     password: 'David',
     pictureUrl: 'https://cdn5.vectorstock.com/i/1000x1000/23/49/new-man-avatar-icon-flat-vector-19152349.jpg',
@@ -23,7 +23,7 @@ const users = [
     liked: [], 
   },
   {
-    name: 'Rafa',
+    username: 'Rafa',
     email: 'rafa@gmail.cat',
     password: 'Rafa',
     pictureUrl: 'https://cdn5.vectorstock.com/i/1000x1000/23/49/new-man-avatar-icon-flat-vector-19152349.jpg',
@@ -33,7 +33,7 @@ const users = [
     liked: [], 
   },
   {
-    name: 'Michal',
+    username: 'Michal',
     email: 'michal@gmail.cat',
     password: 'Michal',
     pictureUrl: 'https://cdn5.vectorstock.com/i/1000x1000/23/49/new-man-avatar-icon-flat-vector-19152349.jpg',

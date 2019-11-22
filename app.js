@@ -3,18 +3,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 const app = express();
 
 var indexRouter = require('./routes/index');
-//var usersRouter = require('./routes/users');
+var userRouter = require('./routes/user-routes');
 
 require('dotenv').config();
 
 // CONNECT TO DB
-mongoose
-  .connect('mongodb://localhost:27017/cyranoDb',{ useNewUrlParser:true})
-  .then(()=> console.log('Mongodb connected'))
-  .catch( err => console.log('error connecting to MongoDb',err));
+mongoose.connect('mongodb://localhost:27017/cyranoDb', {useNewUrlParser: true, useUnifiedTopology: true})
+  .then(() => console.log('Mongodb connected'))
+  .catch( err => console.log('error connecting to MongoDb', err));
 
 app.use(logger('dev'));
 
@@ -28,8 +30,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Before the routes
+// SESSION ( & COOKIES ) MIDDLEWARE   -- req.session.currentUser
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    // cookie: { maxAge: 3600000 } // 1 hour
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 60 * 60 * 24 * 7, // Default - 14 days
+    }),
+  }),
+);
+
 // ROUTES
 app.use('/', indexRouter);
+app.use('/', userRouter);
 //app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

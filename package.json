@@ -7,9 +7,12 @@
     "start-dev": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "connect-mongo": "^3.1.2",
     "cookie-parser": "^1.4.4",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
+    "express-session": "^1.17.0",
     "hbs": "~4.0.4",
     "mongoose": "^5.7.12",
     "morgan": "^1.9.1"

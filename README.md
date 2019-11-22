@@ -53,7 +53,7 @@ User model
 
 ```javascript
 {
-  name: String,
+  username: String,
   email: String,
   password: String,
   photo: String,
