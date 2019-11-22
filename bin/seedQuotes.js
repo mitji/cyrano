@@ -4,28 +4,28 @@ const Quote = require('../models/Quote');
 const quotes = [
   {
     text: 'Tus imperfecciones te convierten en la mujer perfect',
-    author: '5dd6c830f92b03e85438d307',
+    author: '5dd7c2c75518031befa0919f',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'Te haría mellizos hasta que salieran impares',
-    author: '5dd6c830f92b03e85438d307',
+    author: '5dd7c2c75518031befa0919f',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'Tus ojos son como dos uvas, tu boca como una manzana. ¡Qúe buena ensalada de fruta haríamos con mi banana!',
-    author: '5dd6c830f92b03e85438d307',
+    author: '5dd7c2c75518031befa0919f',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'No sé nada de amor, estoy casado',
-    author: '5dd6c830f92b03e85438d307',
+    author: '5dd7c2c75518031befa0919f',
     likes: [],
     language: 'es',
     type: ''

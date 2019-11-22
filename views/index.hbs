@@ -12,5 +12,10 @@
 
   <button type='submit'>Get Quotes</button>
 </form>
-
+<div>
 <span>Not a member?</span><a href="/signup">Sign up</a>
+</div>
+
+{{#if errorMessage}}
+  <div>{{errorMessage}}</div>
+  {{/if}}

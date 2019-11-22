@@ -1,11 +1,30 @@
 <h1>Don't wait and become the new Shakespeare</h1>
 <form action='/signup' method='POST'>
 
+  <label for=''>Username</label>
+  <input type='text' name='username'>
+
+ <label for=''>Password</label>
+  <input type='password' name='password'placeholder="Cyr***">
+
   <label for=''>Email</label>
-  <input type='text' name='email'>
+  <input type='text' name='email' placeholder="Cyrano">
 
-  <label for=''>Password</label>
-  <input type='password' name='password'>
+  <label for=''>Picture</label>
+  <input type='text' name='picture'>
 
-  <button type='submit'>Become a quoter!</button>
+   <label for=''>Bio</label>
+  <input type='text' name='bio' placeholder="catch phrase ">
+
+   
+  <button type='submit'>Become a Cyrano</button>
 </form>
+
+<div>
+  <span>Already a Cyrano ? </span>
+  <a href="/login">Login</a>
+</div>
+
+{{#if errorMessage}}
+  <div>{{errorMessage}}</div>
+  {{/if}}
