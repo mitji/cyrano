@@ -75,8 +75,8 @@ form button {
           justify-content: center;
   -ms-flex-item-align: center;
       align-self: center;
-  background-color: red;
-  color: white;
+  background-color: #ace8dc;
+  color: #5d5d5d;
   padding: 10px;
   margin-top: 15px;
   width: 200px;

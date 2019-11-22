@@ -16,5 +16,21 @@
     "hbs": "~4.0.4",
     "mongoose": "^5.7.12",
     "morgan": "^1.9.1"
-  }
+  },
+  "description": "",
+  "main": "app.js",
+  "bin": {
+    "cyrano": "seedQuotes.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mitji/cyrano.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mitji/cyrano/issues"
+  },
+  "homepage": "https://github.com/mitji/cyrano#readme"
 }

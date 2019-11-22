@@ -81,7 +81,7 @@ router.post('/login', (req, res, next) => {
                 // Save the login in the session (and create cookie)
                 // And redirect the user
                 req.session.currentUser = user;
-                res.redirect('/');
+                res.redirect('/home');
                 console.log('logged in');
             } else {
                 res.render('index', {errorMessage:"Password incorrect!"});
