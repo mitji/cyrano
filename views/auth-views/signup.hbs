@@ -1,29 +1,30 @@
 <h1 class="form-title" >Become a new Cyrano</h1>
-<form action='/auth/signup' method='POST' class="form form--signup">
+<main>
+  <form action='/auth/signup' method='POST' class="form form--signup">
+    <label for=''>Username</label>
+    <input type='text' name='username'>
 
-  <label for=''>Username</label>
-  <input type='text' name='username'>
+    <label for=''>Password</label>
+    <input type='password' name='password' placeholder="Cyr***">
 
- <label for=''>Password</label>
-  <input type='password' name='password' placeholder="Cyr***">
+    <label for=''>Email</label>
+    <input type='text' name='email' placeholder="Cyrano">
 
-  <label for=''>Email</label>
-  <input type='text' name='email' placeholder="Cyrano">
+    <label for=''>Picture</label>
+    <input type='text' name='picture'>
 
-  <label for=''>Picture</label>
-  <input type='text' name='picture'>
+    <label for=''>Bio</label>
+    <input type='text' name='bio' placeholder="catch phrase ">
 
-  <label for=''>Bio</label>
-  <input type='text' name='bio' placeholder="catch phrase ">
+    <button type='submit'>Become a Cyrano</button>
+  </form>
 
-  <button type='submit'>Become a Cyrano</button>
-</form>
+  <div class="form-link">
+    <span>Already a Cyrano ? </span>
+    <a href="/login">Login</a>
+  </div>
 
-<div class="form-link">
-  <span>Already a Cyrano ? </span>
-  <a href="/login">Login</a>
-</div>
-
-{{#if errorMessage}}
-  <div class="err-message">{{errorMessage}}</div>
+  {{#if errorMessage}}
+    <div class="err-message">{{errorMessage}}</div>
   {{/if}}
+</main>

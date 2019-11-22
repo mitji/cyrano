@@ -1,8 +1,8 @@
 
 <h1 class="form-title">Welcome to Cyrano App</h1>
 <h3 class="form-title form-title--subtitle">Find the best love quotes!</h3>
-
-<form action='/auth/login' method='POST'>
+<main>
+  <form action='/auth/login' method='POST'>
 
   <label for=''>User Name</label>
   <input type='text' name='username'>
@@ -11,11 +11,12 @@
   <input type='password' name='password'>
 
   <button type='submit'>Get Quotes</button>
-</form>
-<div class="form-link">
-  <span>Not a member?</span><a href="/signup">Sign up</a>
-</div>
+  </form>
+  <div class="form-link">
+    <span>Not a member?</span><a href="/signup">Sign up</a>
+  </div>
 
-{{#if errorMessage}}
-  <div class="err-message">{{errorMessage}}</div>
+  {{#if errorMessage}}
+    <div class="err-message">{{errorMessage}}</div>
   {{/if}}
+</main>

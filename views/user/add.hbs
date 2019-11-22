@@ -1,0 +1,19 @@
+<!-- CREATE QUOTE -->
+<main>
+  <form action='/add' method='POST' class="add-quote">
+
+    <label for=''>Text</label>
+    <textarea type='text' name='quote'></textarea>
+
+    <button>Preview</button>
+
+    <div class="add-quote__preview"></div>
+
+    <button type='submit'>Submit</button>
+  </form>
+  {{#if errorMessage}}
+    <div class="err-message">{{errorMessage}}</div>
+  {{/if}}
+</main>
+
+{{> navbar}}

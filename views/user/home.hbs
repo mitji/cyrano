@@ -1,8 +1,8 @@
-<h1>megasecret place</h1>
+<main>
+  <h1>All quotes</h1>
+  {{#each quotesList}}
+    {{> quoteCard this}}
+  {{/each}}
+</main>
 
-{{#each quotesList}}
-<p>
-{{this.text}}
-</p>
-{{this.author.username}}<br>
-{{/each}}
+{{> navbar}}
