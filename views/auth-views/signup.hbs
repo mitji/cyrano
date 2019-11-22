@@ -1,5 +1,5 @@
-<h1>Don't wait and become the new Shakespeare</h1>
-<form action='/auth/signup' method='POST'>
+<h1 class="form-title" >Become a new Cyrano</h1>
+<form action='/auth/signup' method='POST' class="form form--signup">
 
   <label for=''>Username</label>
   <input type='text' name='username'>
@@ -19,11 +19,11 @@
   <button type='submit'>Become a Cyrano</button>
 </form>
 
-<div>
+<div class="form-link">
   <span>Already a Cyrano ? </span>
   <a href="/login">Login</a>
 </div>
 
 {{#if errorMessage}}
-  <div>{{errorMessage}}</div>
+  <div class="err-message">{{errorMessage}}</div>
   {{/if}}
