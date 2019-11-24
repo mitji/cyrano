@@ -4,14 +4,14 @@ const Quote = require('../models/Quote');
 const quotes = [
   {
     text: 'Tus imperfecciones te convierten en la mujer perfect',
-    author: '5ddaabf58613ee2ae7e44b72',
+    author: '5dd7d07f1008e8f30bdaa06b',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'Te haría mellizos hasta que salieran impares',
-    author: '5ddaabf58613ee2ae7e44b73',
+    author: '5dd7d07f1008e8f30bdaa06c',
     likes: [],
     language: 'es',
     type: ''
@@ -25,35 +25,35 @@ const quotes = [
   },
   {
     text: 'No sé nada de amor, estoy casado',
-    author: '5ddaabf58613ee2ae7e44b75',
+    author: '5dd7d07f1008e8f30bdaa06b',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'I love you more than I have ever found a way to say to you.',
-    author: '5ddaabf58613ee2ae7e44b75',
+    author: '5dd7d07f1008e8f30bdaa06b',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'I love you. Today. Right now. Just as you are.',
-    author: '5ddaabf58613ee2ae7e44b75',
+    author: '5dd7d07f1008e8f30bdaa06b',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: 'Love is a dream that came to life when we meet',
-    author: '5ddaabf58613ee2ae7e44b75',
+    author: '5dd7d07f1008e8f30bdaa06b',
     likes: [],
     language: 'es',
     type: ''
   },
   {
     text: "If I could reach up and hold a star for every time you've made me smile, the entire evening sky would be in the palm of my hand",
-    author: '5ddaabf58613ee2ae7e44b75',
+    author: '5dd7d07f1008e8f30bdaa06b',
     likes: [],
     language: 'es',
     type: ''

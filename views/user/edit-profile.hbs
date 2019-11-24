@@ -1,23 +1,28 @@
-<form action="/edit-profile" method="post">
 
-    <label for=''>Username</label>
-    <input type='text' name='username' value="{{user.username}}">
+<main>
+    <div class="private-header">
+        <button id="back-arrow"><img src="/images/arrow.png" alt=""></button>
+        <h1>Edit profile</h1>
+    </div>
+    <form action="/edit-profile" method="post">
 
-    <label for=''>Password</label>
-    <input type='password' name='password' value="{{user.password}}">
+        <label for=''>Username</label>
+        <input type='text' name='username' value="{{user.username}}">
 
-    <label for=''>Email</label>
-    <input type='text' name='email' value="{{user.email}}">
+        <label for=''>Password</label>
+        <input type='password' name='password' value="{{user.password}}">
 
-    <label for=''>Picture</label>
-    <input type='text' name='picture' value="{{user.pictureUrl}}">
+        <label for=''>Email</label>
+        <input type='text' name='email' value="{{user.email}}">
 
-    <label for=''>Bio</label>
-    <input type='text' name='bio' value="{{user.bio}}">
+        <label for=''>Picture</label>
+        <input type='text' name='picture' value="{{user.pictureUrl}}">
 
-    <button type='submit'>edit profile</button>
+        <label for=''>Bio</label>
+        <input type='text' name='bio' value="{{user.bio}}">
 
+        <button type='submit'>edit profile</button>
 
-
-
-</form>
+    </form>
+    {{> navbar}}
+</main>

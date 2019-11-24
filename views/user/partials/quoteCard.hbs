@@ -3,8 +3,10 @@
   <div class="quote-card__info">
     <p>{{this.author.username}}</p>
     <div class="quote-card__info__actions">
-      <button>Like</button>
-      <span>20</span>
+      <form action="/home/like?_id={{this._id}}" method="POST">
+        <button type="submit">Like</button>
+      </form>
+      <span>{{this.likes.length}}</span>
       <button>Fav</button>  
     </div>
     
