@@ -1,0 +1,43 @@
+<main>
+  <h1>{{user.username}}</h1>
+  <p>{{user.bio}}</p>
+
+  <div class="profile__selector">
+    <button id="btn-my-quotes" class="selected">My quotes</button>
+    <button id="btn-fav-quotes" class="not-selected">Fav quotes</button>
+  </div>
+  <div class="profile__my-quotes">
+    {{#each quotes}}
+      <p>{{this.text}}</p>
+    {{/each}}
+  </div>
+  <div class="profile__fav-quotes">
+    my fav fab quotes
+  </div>
+  
+  {{>navbar}}
+</main>
+
+<script>
+  let btnMyQuotes = document.querySelector('#btn-my-quotes');
+  let btnFavQuotes = document.querySelector('#btn-fav-quotes');
+  let MyQuotesDiv = document.querySelector('.profile__my-quotes');
+  let MyFavQuotesDiv = document.querySelector('.profile__fav-quotes');
+
+  btnMyQuotes.addEventListener('click', () => {
+    MyQuotesDiv.style.display = 'block';
+    MyFavQuotesDiv.style.display = 'none';
+    btnMyQuotes.classList.remove("not-selected");
+    btnMyQuotes.classList.add("selected");
+    btnFavQuotes.classList.remove("selected");
+    btnFavQuotes.classList.add("not-selected");
+  });
+  btnFavQuotes.addEventListener('click', () => {
+    MyQuotesDiv.style.display = 'none';
+    MyFavQuotesDiv.style.display = 'block';
+    btnFavQuotes.classList.remove("not-selected");
+    btnFavQuotes.classList.add("selected");
+    btnMyQuotes.classList.remove("selected");
+    btnMyQuotes.classList.add("not-selected");
+  });
+</script>

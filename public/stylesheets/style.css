@@ -9,12 +9,12 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: #ea6f6f;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(35%, #ea6f6f), to(rgba(253, 171, 160, 0.724527)));
-  background: linear-gradient(180deg, #ea6f6f 35%, rgba(253, 171, 160, 0.724527) 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(35%, #ea6f6f), to(rgba(253, 171, 160, 0.724527)));
+  background: linear-gradient(90deg, #ea6f6f 35%, rgba(253, 171, 160, 0.724527) 100%);
 }
 
 main {
-  padding: 20px;
+  padding: 20px 20px 48px;
 }
 
 .form-title {
@@ -92,7 +92,7 @@ form button {
 }
 
 form button:hover {
-  background-color: #8d0000;
+  background-color: #4bb9a3;
 }
 
 form--signup {
@@ -152,14 +152,46 @@ a {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 10px 0;
+  border-bottom: 1px solid #ace8dc36;
+}
+
+.quote-card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 5px;
+}
+
+.quote-card__info__actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.quote-card__info__actions button {
+  outline: none;
+  background: transparent;
+  border: none;
 }
 
 nav {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   padding: 15px 0;
   background-color: #fafbfa;
+}
+
+nav img {
+  width: 20px;
 }
 
 ul {
@@ -175,5 +207,93 @@ ul {
 
 ul a {
   text-decoration: none;
+}
+
+.private-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.private-header button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.private-header button img {
+  width: 25px;
+}
+
+form label {
+  width: 85%;
+  margin-bottom: 15px;
+}
+
+form textarea {
+  width: 85%;
+  height: 150px;
+}
+
+form .btn-preview {
+  background-color: transparent;
+}
+
+form .btn-cancel {
+  background-color: transparent;
+}
+
+.profile__selector {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 15px;
+  border-top: 1px solid #4d4d4d;
+  position: absolute;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  left: 0;
+}
+
+.profile__selector button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.profile__selector button:first-of-type {
+  border-right: 1px solid #4d4d4d;
+}
+
+.profile__selector .not-selected {
+  border-bottom: 1px solid #4d4d4d;
+}
+
+.profile__selector .selected {
+  border-bottom: 2px solid black;
+}
+
+.profile__my-quotes {
+  margin-top: 70px;
+  display: block;
+}
+
+.profile__fav-quotes {
+  margin-top: 70px;
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

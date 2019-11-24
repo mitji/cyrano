@@ -2,9 +2,11 @@ var express = require('express');
 var router = express.Router();
 const homeRouter = require("./home");
 const addRouter = require("./add");
+const profileRouter = require("./profile");
 
 router.use('/home', homeRouter);
 router.use('/add', addRouter);
+router.use('/profile', profileRouter);
 
 // USE (HORIZONTAL)
 const isLoggedIn = (req, res, next) => {

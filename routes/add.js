@@ -15,7 +15,10 @@ router.post('/', (req,res,next) => {
   Quotes.create({text: quoteText, author: userId})
     .then((quote) => {
       console.log(req.session.currentUser._id);
-      res.render('user/add');
+      // REDIRECT TO USER PROFILE
+
+      // ---------------------
+      res.redirect('profile');
     })
     .catch(err => console.log(err));
 

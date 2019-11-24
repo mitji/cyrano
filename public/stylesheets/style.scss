@@ -7,10 +7,10 @@ body {
   min-height: 100vh;
   box-sizing: border-box;
   background: rgb(234,111,111);
-  background: linear-gradient(180deg, rgba(234,111,111,1) 35%, rgba(253,171,160,0.7245273109243697) 100%);
+  background: linear-gradient(90deg, rgba(234,111,111,1) 35%, rgba(253,171,160,0.7245273109243697) 100%);
 }
 main {
-  padding: 20px;
+  padding: 20px 20px 48px;
 }
 
 .form-title {
@@ -62,7 +62,7 @@ form {
     cursor: pointer;
     transition: 0.3s;
     &:hover {
-      background-color: rgb(141, 0, 0);
+      background-color: #4bb9a3;
     }
   }
   &--signup {
@@ -102,13 +102,32 @@ a {
   flex-direction: column;
   box-sizing: border-box;
   padding: 10px 0;
+  border-bottom: 1px solid #ace8dc36;
+  &__info {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 5px;
+    &__actions {
+      display: flex;
+      button {
+        outline: none;
+        background: transparent;
+        border: none;
+      }
+    }
+  }
 }
 nav {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   padding: 15px 0;
   background-color: #fafbfa;
+  img {
+    width: 20px;
+  };
 }
 ul {
   display: flex;
@@ -117,5 +136,78 @@ ul {
   justify-content: space-around;
   a {
     text-decoration: none;
+  }
+}
+
+
+// /add
+.private-header {
+  display: flex;
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-right: 15px;
+    img {
+      width: 25px;
+    }
+  }
+}
+form {
+  label {
+    width: 85%;
+    margin-bottom: 15px;
+  }
+  textarea {
+    width: 85%;
+    height: 150px;
+  }
+  .btn-preview {
+    background-color: transparent;
+  }
+  .btn-cancel {
+    background-color: transparent;
+  }
+}
+
+// profile
+.profile {
+  &__selector {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    border-top: 1px solid #4d4d4d;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+    left: 0;
+    button {
+      display: flex;
+      justify-content: center;
+      width: 50%;
+      border: none;
+      background: transparent;
+      padding: 10px 0;
+      outline: none;
+      cursor: pointer;
+      &:first-of-type {
+        border-right: 1px solid #4d4d4d;
+      }
+    }
+    .not-selected {
+      border-bottom: 1px solid #4d4d4d;
+    }
+    .selected {
+      border-bottom: 2px solid black
+    }
+  }
+  &__my-quotes {
+    margin-top: 70px;
+    display: block;
+  }
+  &__fav-quotes {
+    margin-top: 70px;
+    display: none;
   }
 }
