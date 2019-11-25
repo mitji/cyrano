@@ -1,7 +1,7 @@
 <div class="quote-card">
   <p>{{this.text}}</p>
   <div class="quote-card__info">
-    <p>{{this.author.username}}</p>
+    <p class="quote-card__info__username">{{this.author.username}}</p>
     <div class="quote-card__info__actions">
       <form action="/home/like?_id={{this._id}}" method="POST">
         <button id="like-btn" type="submit">Like</button>

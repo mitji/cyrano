@@ -1,8 +1,11 @@
 <main>
   <h1>All quotes</h1>
-  {{#each quotesList}}
-    {{> quoteCard this}}
-  {{/each}}
+  <div class="quotes-container">
+    {{#each quotesList}}
+      {{> quoteCard this}}
+    {{/each}}
+  </div>
   {{> navbar}}
+
 </main>
 

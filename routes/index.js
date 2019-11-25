@@ -5,9 +5,11 @@ const authRouter = require('./auth')
 const loginRouter = require("./login");
 const signupRouter = require("./signup");
 
+
 router.use('/auth', authRouter);
 router.use('/login', loginRouter);
 router.use('/signup', signupRouter);
+
 
 
 /* GET home page. */

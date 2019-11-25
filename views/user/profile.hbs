@@ -1,6 +1,7 @@
 <main>
   <h1>{{user.username}}</h1>
   <p>{{user.bio}}</p>
+  <img src="{{this.pictureUrl}}" alt="">
 
   <div>
     <a href="/edit-profile" >Edit profile</a>
@@ -11,18 +12,21 @@
   </div>
   <div class="profile__my-quotes">
     {{#each quotes}}
-      <p>{{this.text}}</p>
-      <span>Likes {{this.likes.length}}</span>
+      <div class="quote-card">
+        <p>{{this.text}}</p>
+        <span>Likes {{this.likes.length}}</span>
+      </div>
     {{/each}}
   </div>
   <div class="profile__fav-quotes">
     {{#each userFav}}
+    <div class="quote-card">
       <p>{{this.text}}</p>
-      <p>{{this.author}}</p>
+      <p class="quote-card__info__username">{{this.username}}</p>
       <span>Likes {{this.likes.length}}</span>
+    </div>  
     {{/each}}
   </div>
-  
   {{>navbar}}
 </main>
 

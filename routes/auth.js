@@ -1,17 +1,23 @@
 var express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const multer= require('multer');
 
 var router = express.Router();
 
 // - specify how many salt rounds
 const saltRounds = 10;
 
+// create mulder object
+const upload= multer({ dest : './public/uploads/'});
+
 // POST ´/auth/signup´
-router.post('/signup', ( req,res,next) => {
+router.post('/signup', upload.single('picture'),( req,res,next) => {
     
     // 1 destrcture username and password    
-    const { username, password,email,pic,bio} = req.body;
+    const { username, password,email,picture,bio} = req.body;
+    const path = '/uploads/' + req.file.filename;
+    console.log('path', path);
 
     if ( username ==='' || password === '' || email ==='' ){
         res.render('auth-views/signup', {errorMessage:'Provide valid inputs'});
@@ -29,8 +35,7 @@ router.post('/signup', ( req,res,next) => {
         const hashedPassword = bcrypt.hashSync(password,salt);
 
         // once user is encrypted we add to db
-
-        User.create({username, password: hashedPassword, email, pic, bio})
+        User.create({username, password: hashedPassword, email, pictureUrl: path, bio})
             .then(()=>{
                 console.log('User added successfully');
                 res.redirect('/');

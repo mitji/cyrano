@@ -141,6 +141,10 @@ a {
   color: #00B7FF;
 }
 
+.quotes-container {
+  margin-bottom: 15px;
+}
+
 .quote-card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -151,8 +155,13 @@ a {
           flex-direction: column;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 10px 0;
+  padding: 15px;
   border-bottom: 1px solid #ace8dc36;
+  margin-top: 18px;
+  background-color: #fff4f4;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 7px 0px #7b3838;
+          box-shadow: 0px 2px 7px 0px #7b3838;
 }
 
 .quote-card__info {
@@ -169,6 +178,14 @@ a {
   margin-top: 5px;
 }
 
+.quote-card__info form {
+  margin: 0;
+}
+
+.quote-card__info__username {
+  font-weight: bold;
+}
+
 .quote-card__info__actions {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -179,6 +196,9 @@ a {
   outline: none;
   background: transparent;
   border: none;
+  width: 50px;
+  padding: 0;
+  margin: 0;
 }
 
 nav {
