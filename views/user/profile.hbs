@@ -12,10 +12,15 @@
   <div class="profile__my-quotes">
     {{#each quotes}}
       <p>{{this.text}}</p>
+      <span>Likes {{this.likes.length}}</span>
     {{/each}}
   </div>
   <div class="profile__fav-quotes">
-    my fav fab quotes
+    {{#each userFav}}
+      <p>{{this.text}}</p>
+      <p>{{this.author}}</p>
+      <span>Likes {{this.likes.length}}</span>
+    {{/each}}
   </div>
   
   {{>navbar}}

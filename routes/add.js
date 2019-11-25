@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const Quotes = require('./../models/Quote');
-const User = require('./../models/User');
+const Users = require('./../models/User');
 
 // POST user/add
 router.post('/', (req,res,next) => {
@@ -14,14 +14,18 @@ router.post('/', (req,res,next) => {
   const userId = req.session.currentUser._id;
   Quotes.create({text: quoteText, author: userId})
     .then((quote) => {
-      console.log(req.session.currentUser._id);
-      // REDIRECT TO USER PROFILE
-
-      // ---------------------
-      res.redirect('profile');
+      Users.findById(userId)
+        .then(user => {
+          user.quotes.push(quote);
+          console.log(user.quotes);
+          Users.updateOne({_id: userId}, {quotes: user.quotes})
+            .then( () => {
+              // REDIRECT TO USER PROFILE
+              res.redirect('profile');
+            })
+            .catch(err => console.log(err));
+        })
     })
-    .catch(err => console.log(err));
-
 });
 
 

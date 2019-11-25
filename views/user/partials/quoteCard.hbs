@@ -4,10 +4,12 @@
     <p>{{this.author.username}}</p>
     <div class="quote-card__info__actions">
       <form action="/home/like?_id={{this._id}}" method="POST">
-        <button type="submit">Like</button>
+        <button id="like-btn" type="submit">Like</button>
       </form>
-      <span>{{this.likes.length}}</span>
-      <button>Fav</button>  
+      <span id="likes-text">{{this.likes.length}}</span>
+      <form action="/home/fav?_id={{this._id}}" method="POST">
+        <button id="" type="submit">Fav</button>
+      </form>
     </div>
     
   </div>
