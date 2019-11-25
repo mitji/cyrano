@@ -1,7 +1,6 @@
 var express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
-const multer= require('multer');
 const parser = require('../config/cloudinary');
 var router = express.Router();
 
@@ -19,8 +18,6 @@ router.post('/signup', parser.single('picture'),( req,res,next) => {
     } else {
         image_url= '/images/avatar.png';
     }
-
-    console.log('image url', image_url);
 
     if ( username ==='' || password === '' || email ==='' ){
         res.render('auth-views/signup', {errorMessage:'Provide valid inputs'});

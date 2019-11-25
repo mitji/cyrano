@@ -4,7 +4,12 @@
         <button id="back-arrow"><img src="/images/arrow.png" alt=""></button>
         <h1>Edit profile</h1>
     </div>
-    <form action="/edit-profile" method="post">
+    <form action="/edit-profile" method="post" enctype="multipart/form-data">
+        <div class="profile__img">
+            <img  src="{{user.pictureUrl}}" alt="">
+        </div>
+        <label for=''>Picture</label>
+        <input type='file' name='picture'>
 
         <label for=''>Username</label>
         <input type='text' name='username' value="{{user.username}}">
@@ -13,10 +18,9 @@
         <input type='password' name='password' value="{{user.password}}">
 
         <label for=''>Email</label>
-        <input type='text' name='email' value="{{user.email}}">
+        <input type='email' name='email' value="{{user.email}}">
 
-        <label for=''>Picture</label>
-        <input type='text' name='picture' value="{{user.pictureUrl}}">
+        
 
         <label for=''>Bio</label>
         <input type='text' name='bio' value="{{user.bio}}">
