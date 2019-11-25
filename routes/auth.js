@@ -2,22 +2,25 @@ var express = require('express');
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const multer= require('multer');
-
+const parser = require('../config/cloudinary');
 var router = express.Router();
 
 // - specify how many salt rounds
 const saltRounds = 10;
 
-// create mulder object
-const upload= multer({ dest : './public/uploads/'});
-
 // POST ´/auth/signup´
-router.post('/signup', upload.single('picture'),( req,res,next) => {
+router.post('/signup', parser.single('picture'),( req,res,next) => {
     
     // 1 destrcture username and password    
-    const { username, password,email,picture,bio} = req.body;
-    const path = '/uploads/' + req.file.filename;
-    console.log('path', path);
+    const { username, password,email,bio} = req.body;
+    
+    if (typeof req.file != 'undefined') {
+        image_url= req.file.secure_url;
+    } else {
+        image_url= '/images/avatar.png';
+    }
+
+    console.log('image url', image_url);
 
     if ( username ==='' || password === '' || email ==='' ){
         res.render('auth-views/signup', {errorMessage:'Provide valid inputs'});
@@ -35,7 +38,7 @@ router.post('/signup', upload.single('picture'),( req,res,next) => {
         const hashedPassword = bcrypt.hashSync(password,salt);
 
         // once user is encrypted we add to db
-        User.create({username, password: hashedPassword, email, pictureUrl: path, bio})
+        User.create({username, password: hashedPassword, email, pictureUrl: image_url, bio})
             .then(()=>{
                 console.log('User added successfully');
                 res.redirect('/');
