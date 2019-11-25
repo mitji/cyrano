@@ -4,8 +4,9 @@ var router = express.Router();
 const Quotes = require('./../models/Quote');
 const Users = require('./../models/User');
 
-router.post('/like', (req, res, next) => {
+router.get('/like', (req, res, next) => {
     const userId = req.session.currentUser._id;
+
     const {_id} = req.query;
     // get array of likes
     
@@ -24,7 +25,7 @@ router.post('/like', (req, res, next) => {
             // update like
             if (isInLikes) {
                 console.log("You've already given like to this quote!");
-                res.redirect('/home');
+                //res.status(200).send()
                 return;
             }
             console.log('-----New like!'); 
@@ -36,33 +37,17 @@ router.post('/like', (req, res, next) => {
             Quotes.updateOne({_id: _id}, {likes: likesArr})
                 .then(quote => {
                     console.log('likes update');
-                    res.redirect('/home');
+                    //res.redirect('/home');
+                    //console.log(quote.likes.length);
+                    
+                    res.status(200).send()
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    res.status(400).send(err)
+
+                });
                 })
         .catch(err => console.log(err));
-
-    // Quotes.findById({_id: _id}).where('likes').elemMatch({$ne: userId})
-    //     .then(quote => {
-    //         console.log('initial likes', quote.likes);
-    //         const likesArr = quote.likes;
-    //         likesArr.push(userId);
-    //         console.log('updated likes',likesArr);
-    //         // update like
-    //         //const isInLikes = false;
-    //         console.log({_id});
-            
-    //         let isInLikes = quote.likes.find( () => element === {_id});
-    //         console.log('isInLikes',isInLikes);
-            
-    //         Quotes.updateOne({_id: _id}, {likes: likesArr})
-    //             .then(quote => {
-    //                 res.redirect('/home');
-    //             })
-    //             .catch(err => console.log(err));
-    //             })
-    //     .catch(err => console.log("You've already given like to this quote!", err));
-    
     
 })
 

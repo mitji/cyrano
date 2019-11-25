@@ -3,11 +3,12 @@
   <div class="quote-card__info">
     <p class="quote-card__info__username">{{this.author.username}}</p>
     <div class="quote-card__info__actions">
-      <form action="/home/like?_id={{this._id}}" method="POST">
+      <form class="like-form" action="/home/like?_id={{this._id}}" method="POST">
+      <input type="text" value='{{this._id}}' style="display:none">
         <button id="like-btn" type="submit">Like</button>
+        <span class="likes-text">{{this.likes.length}}</span>
       </form>
-      <span id="likes-text">{{this.likes.length}}</span>
-      <form action="/home/fav?_id={{this._id}}" method="POST">
+      <form id="fav-form" action="/home/fav?_id={{this._id}}" method="POST">
         <button id="" type="submit">Fav</button>
       </form>
     </div>
