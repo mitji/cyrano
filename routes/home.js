@@ -51,7 +51,7 @@ router.get('/like', (req, res, next) => {
     
 })
 
-router.post('/fav', (req, res, next) => {
+router.get('/fav', (req, res, next) => {
     const userId = req.session.currentUser._id;
     const {_id} = req.query;
     Users.findById({_id: userId})
@@ -71,7 +71,7 @@ router.post('/fav', (req, res, next) => {
             // update like
             if (isInFav) {
                 console.log("You've already added to favorites!");
-                res.redirect('/home');
+                res.status(200).send();
                 return;
             }
             console.log('-----New fav!'); 
@@ -83,9 +83,12 @@ router.post('/fav', (req, res, next) => {
             Users.updateOne({_id: userId}, {favorites: favsArr})
                 .then(quote => {                    
                     console.log('favorites update');
-                    res.redirect('/home');
+                    res.status(200).send();
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    res.status(400).send(err)
+
+                });
                 })
         .catch(err => console.log(err));  
   })

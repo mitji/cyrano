@@ -1,6 +1,6 @@
 // select forms
 const likeForms = document.querySelectorAll('.like-form');
-//const favForm = document.querySelector('#fav-form');
+const favForms = document.querySelectorAll('.fav-form');
 
 // select buttons
 
@@ -29,6 +29,28 @@ likeForms.forEach((form) => {
         numLikes += 1;
         numLikesSpan.innerHTML = numLikes;
         console.log('QUOTE LIKED');
+      })
+      .catch( (err) => console.log(err));
+
+  });
+})
+
+// POST create new like
+
+favForms.forEach((form) => {
+
+  form.addEventListener('click', (e) =>{
+
+    // prevent the form reloading the page
+
+    e.preventDefault();
+
+    const favId = form.querySelector('input').value; 
+    axios
+      .get(`/home/fav?_id=${favId}`)
+      .then((response) => {
+       
+        console.log('QUOTE TO FAV');
       })
       .catch( (err) => console.log(err));
 
