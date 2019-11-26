@@ -5,15 +5,14 @@
     <div class="quote-card__info__actions">
       <form class="like-form" action="/home/like?_id={{this._id}}" method="POST">
         <input type="text" value='{{this._id}}' style="display:none">
-        <button id="like-btn" type="submit">Like</button>
         <span class="likes-text">{{this.likes.length}}</span>
+        <button id="like-btn" type="submit">Like</button>
       </form>
       <form class="fav-form" action="/home/fav?_id={{this._id}}" method="POST">
         <input type="text" value='{{this._id}}' style="display:none">
         <button id="fav-btn" type="submit">Fav</button>
       </form>
     </div>
-    
   </div>
 </div>
 

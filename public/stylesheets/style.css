@@ -8,9 +8,9 @@ body {
   min-height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background: #ea6f6f;
-  background: -webkit-gradient(linear, left top, right top, color-stop(35%, #ea6f6f), to(rgba(253, 171, 160, 0.724527)));
-  background: linear-gradient(90deg, #ea6f6f 35%, rgba(253, 171, 160, 0.724527) 100%);
+  background: #fceef0;
+  background: radial-gradient(circle, #fceef0 35%, #ffbcc4 100%);
+  height: 100vh;
 }
 
 main {
@@ -19,8 +19,9 @@ main {
 }
 
 .form-title {
+  font-family: 'Caveat', cursive;
   text-align: center;
-  color: #ffdcdc;
+  color: #574144;
   width: 350px;
   margin: 30px auto 0;
   font-size: 40px;
@@ -54,7 +55,7 @@ form label {
   margin-top: 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  color: white;
+  color: #2F4858;
 }
 
 form input {
@@ -81,6 +82,7 @@ form button {
       align-self: center;
   background-color: #ace8dc;
   color: #5d5d5d;
+  font-weight: bold;
   padding: 10px;
   margin-top: 15px;
   width: 200px;
@@ -147,23 +149,24 @@ form--signup {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 40px;
+  height: 50px;
   width: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   background-color: #fafbfa;
+  -webkit-box-shadow: 0px 0px 2px 0px #2F4858;
+          box-shadow: 0px 0px 2px 0px #2F4858;
 }
 
 .home-header a {
   outline: none;
   text-decoration: none;
-  color: black;
-  background-color: white;
+  color: #2F4858;
   width: 100px;
   padding: 3px;
   text-align: center;
-  border: 1px solid #592d59;
+  border: 1px solid #2F4858;
 }
 
 .home-header a:first-of-type {
@@ -199,12 +202,11 @@ form--signup {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 15px;
-  border-bottom: 1px solid #ace8dc36;
   margin-top: 18px;
-  background-color: #fff4f4;
+  background-color: #fff;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 2px 7px 0px #7b3838;
-          box-shadow: 0px 2px 7px 0px #7b3838;
+  -webkit-box-shadow: 0px 1px 4px 0px #2F4858;
+          box-shadow: 0px 1px 4px 0px #2F4858;
 }
 
 .quote-card__info {
@@ -227,6 +229,7 @@ form--signup {
 
 .quote-card__info__username {
   font-weight: bold;
+  color: #2F4858;
 }
 
 .quote-card__info__actions {
@@ -288,15 +291,28 @@ ul a {
 }
 
 .private-header button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 15%;
   background: transparent;
   border: none;
   outline: none;
   cursor: pointer;
-  margin-right: 15px;
 }
 
 .private-header button img {
   width: 25px;
+}
+
+.private-header h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 form label {
@@ -306,11 +322,13 @@ form label {
 
 form textarea {
   width: 85%;
-  height: 150px;
+  height: 105px;
   padding: 12px;
   border-radius: 5px;
   border: none;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  -webkit-box-shadow: 0px 1px 4px 0px #7b3838;
+          box-shadow: 0px 1px 4px 0px #7b3838;
 }
 
 .btn-preview {
@@ -370,6 +388,7 @@ form textarea {
 
 .profile .user h1 {
   width: 100%;
+  margin: 15px 0 5px;
 }
 
 .profile .user a {
@@ -438,5 +457,23 @@ form textarea {
 .profile__fav-quotes {
   margin-top: 70px;
   display: none;
+}
+
+.logout-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  cursor: pointer;
+  width: 15%;
+}
+
+.logout-btn img {
+  width: 30px;
 }
 /*# sourceMappingURL=style.css.map */

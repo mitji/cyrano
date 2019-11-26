@@ -9,7 +9,7 @@ const Quotes = require('./../models/Quote');
 router.post('/', (req,res,next) => {
   const quoteText = req.body.quote;
   if (quoteText === '') {
-    res.render('user/add', {errorMessage: 'You must write something!'});
+    res.render('user/search', {errorMessage: 'You must write something!'});
     return;  
   }
   
@@ -18,9 +18,12 @@ router.post('/', (req,res,next) => {
   Quotes.find({"text": { "$regex" : quoteText}})
     .populate("author")
     .then((matchQuotes) => {
-     console.log("found", matchQuotes);
-     
-     res.render('user/search',{matchQuotes : matchQuotes});
+      console.log("found", matchQuotes);
+      if (matchQuotes.length != 0) {
+        res.render('user/search',{matchQuotes : matchQuotes});
+      } else {
+        res.render('user/search',{errorMessage : `No quotes found for '${quoteText}' !`});
+      }
     })
     .catch(err => console.log(err));
 });

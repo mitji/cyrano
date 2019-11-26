@@ -1,3 +1,5 @@
+$blue-dark: #2F4858;
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +8,9 @@ body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100vh;
   box-sizing: border-box;
-  background: #ea6f6f;
-  background: linear-gradient(90deg, rgba(234,111,111,1) 35%, rgba(253,171,160,0.7245273109243697) 100%);
+  background: rgb(252,238,240);
+  background: radial-gradient(circle, rgba(252,238,240,1) 35%, rgba(255,188,196,1) 100%);
+  height: 100vh;
   // background: rgb(2,0,36);
   // background: linear-gradient(90deg, rgba(2,0,36,1) 30%, rgba(89,45,89,1) 100%, rgba(0,212,255,1) 100%);
 }
@@ -17,8 +20,9 @@ main {
 }
 
 .form-title {
+  font-family: 'Caveat', cursive;
   text-align: center;
-  color: #ffdcdc;
+  color: #574144;
   width: 350px;
   margin: 30px auto 0;
   font-size: 40px;
@@ -38,7 +42,7 @@ form {
     width: 300px;
     margin-top: 10px;
     box-sizing: border-box;
-    color: white;
+    color: $blue-dark;
   }
   input {
     border: none;
@@ -56,6 +60,7 @@ form {
     align-self: center;
     background-color: #ace8dc;
     color: #5d5d5d;
+    font-weight: bold;
     padding: 10px;
     margin-top: 15px;
     width: 200px;
@@ -102,19 +107,19 @@ form {
   top: 0;
   display: flex;
   justify-content: center;
-  height: 40px;
+  height: 50px;
   width: 100%;
   align-items: center;
   background-color: #fafbfa;
+  box-shadow: 0px 0px 2px 0px $blue-dark;
   a {
     outline: none;
     text-decoration: none;
-    color: black;
-    background-color: white;
+    color: $blue-dark;
     width: 100px;
     padding: 3px;
     text-align: center;
-    border: 1px solid #592d59;
+    border: 1px solid $blue-dark;
     &:first-of-type {
       border-radius: 3px 0 0 3px;
       border-right: none;
@@ -139,11 +144,10 @@ form {
   flex-direction: column;
   box-sizing: border-box;
   padding: 15px;
-  border-bottom: 1px solid #ace8dc36;
   margin-top: 18px;
-  background-color: #fff4f4;
+  background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0px 2px 7px 0px rgb(123, 56, 56);
+  box-shadow: 0px 1px 4px 0px $blue-dark;
   &__info {
     display: flex;
     flex-flow: row wrap;
@@ -154,6 +158,7 @@ form {
     }
     &__username {
       font-weight: bold;
+      color: $blue-dark;
     }
     &__actions {
       display: flex;
@@ -198,14 +203,20 @@ ul {
 .private-header {
   display: flex;
   button {
+    display: flex;
+    width: 15%;
     background: transparent;
     border: none;
     outline: none;
     cursor: pointer;
-    margin-right: 15px;
     img {
       width: 25px;
     }
+  }
+  h1 {
+    display: flex;
+    width: 70%;
+    justify-content: center;
   }
 }
 form {
@@ -215,11 +226,12 @@ form {
   }
   textarea {
     width: 85%;
-    height: 150px;
+    height: 105px;
     padding: 12px;
     border-radius: 5px;
     border: none;
     font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+    box-shadow: 0px 1px 4px 0px rgb(123, 56, 56);
   }
 }
 .btn-preview {
@@ -249,7 +261,7 @@ form {
 
 // profile
 .profile {
-  .user{
+  .user {
     display: flex;
     flex-direction: column;
     &__top {
@@ -264,6 +276,7 @@ form {
     }
     h1 {
       width: 100%;
+      margin: 15px 0 5px;
     }
     a {
       display: flex;
@@ -314,4 +327,14 @@ form {
     margin-top: 70px;
     display: none;
   }
+}
+.logout-btn {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    cursor: pointer;
+    width: 15%;
+    img {
+      width: 30px;
+    }
 }

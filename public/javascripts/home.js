@@ -1,29 +1,3 @@
-// handle header selector
-// const homeTitle = document.querySelector('h1');
-// const lastSel = document.querySelector('first-selector');
-// const topSel = document.querySelector('second-selector');
-// const randomSel = document.querySelector('third-selector');
-console.log('innn');
-
-console.log(homeTitle.innerHTML);
-switch(homeTitle.innerHTML) {
-  case 'All quotes':
-    topSel.classList.remove('home-selected');
-    randomSel.classList.remove('home-selected');
-    lastSel.classList.add('home-selected');
-    break;
-  case 'Top 15 quotes':
-    lastSel.classList.remove('home-selected');
-    randomSel.classList.remove('home-selected');
-    topSel.classList.add('home-selected');
-    break;
-  case 'Random quotes':
-    topSel.classList.remove('home-selected');
-    lastSel.classList.remove('home-selected');
-    randomSel.classList.add('home-selected');
-    break;
-}
-
 // select forms
 const likeForms = document.querySelectorAll('.like-form');
 const favForms = document.querySelectorAll('.fav-form');
@@ -82,3 +56,30 @@ favForms.forEach((form) => {
 
   });
 });
+
+
+// handle header selector
+const homeTitle = document.querySelector('h1');
+const lastSel = document.querySelector('first-selector');
+const topSel = document.querySelector('second-selector');
+const randomSel = document.querySelector('third-selector');
+console.log('innn');
+
+console.log(homeTitle.innerHTML);
+switch(homeTitle.innerHTML) {
+  case 'All quotes':
+    topSel.classList.remove('home-selected');
+    randomSel.classList.remove('home-selected');
+    lastSel.classList.add('home-selected');
+    break;
+  case 'Top 15 quotes':
+    lastSel.classList.remove('home-selected');
+    randomSel.classList.remove('home-selected');
+    topSel.classList.add('home-selected');
+    break;
+  case 'Random quotes':
+    topSel.classList.remove('home-selected');
+    lastSel.classList.remove('home-selected');
+    randomSel.classList.add('home-selected');
+    break;
+}
