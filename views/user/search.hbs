@@ -1,0 +1,31 @@
+<!-- CREATE QUOTE -->
+<main>
+  <div class="private-header">
+    <button id="back-arrow"><img src="/images/arrow.png" alt=""></button>
+    <h1>Search quote</h1>
+  </div>
+  <form action='/search' method='POST' class="add-quote">
+
+    <label for=''>Text</label>
+    <textarea type='text' name='quote'></textarea>
+
+    
+
+    <button type='submit'>Search Quote</button>
+  </form>
+  
+  <button id="cancel-btn" class="btn-cancel">Cancel</button>
+  
+  {{#if errorMessage}}
+    <div class="err-message">{{errorMessage}}</div>
+  {{/if}}
+
+
+      {{#each matchQuotes}}
+      {{> quoteCard this}}
+    {{/each}}
+  
+  
+
+  {{> navbar}}
+</main>
