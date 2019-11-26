@@ -5,18 +5,15 @@
     <h1>Add quote</h1>
   </div>
   <form action='/add' method='POST' class="add-quote">
-
     <label for=''>Text</label>
     <textarea type='text' name='quote'></textarea>
-
-    <button class="btn-preview">Preview</button>
-
-    <div class="add-quote__preview"></div>
-
     <button type='submit'>Submit</button>
   </form>
-  
-  <button id="cancel-btn" class="btn-cancel">Cancel</button>
+
+  <button class="btn-preview">Preview</button>
+  <button class="close-preview">x</button>
+  <button class="btn-preview hidden">Hide preview</button>
+  <div class="add-quote-preview"></div>
   
   {{#if errorMessage}}
     <div class="err-message">{{errorMessage}}</div>

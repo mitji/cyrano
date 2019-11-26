@@ -285,14 +285,40 @@ form label {
 form textarea {
   width: 85%;
   height: 150px;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-form .btn-preview {
+.btn-preview {
   background-color: transparent;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: none;
+  outline: none;
+  margin-top: 15px;
 }
 
-form .btn-cancel {
-  background-color: transparent;
+.close-preview {
+  display: none;
+  position: absolute;
+  right: 30px;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.add-quote-preview {
+  display: none;
 }
 
 .profile .user {
