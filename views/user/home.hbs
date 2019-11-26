@@ -1,16 +1,11 @@
-<section>
-  <a href="">Last</a>
-  <a href="">Top</a>
-  <a href="">Random</a>
-</section>
+{{> homeHeader}}
 <main>
-  <h1>All quotes</h1>
+  <h1>{{title}}</h1>
   <div class="quotes-container">
     {{#each quotesList}}
       {{> quoteCard this}}
     {{/each}}
   </div>
   {{> navbar}}
-
 </main>
 

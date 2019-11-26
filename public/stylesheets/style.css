@@ -142,6 +142,30 @@ a {
   color: #00B7FF;
 }
 
+.home-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 33px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-header a {
+  outline: none;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+}
+
+.home-header a:active {
+  background-color: #b6b6b6;
+}
+
 .quote-card {
   display: -webkit-box;
   display: -ms-flexbox;

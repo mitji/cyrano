@@ -97,8 +97,27 @@ router.get('/', (req,res,next) => {
     Quotes.find()
         .populate('author')
         .then((quotes) => {
-            quotes = quotes.reverse();
-            res.render('user/home', {quotesList : quotes, title: 'All quotes'});
+            
+            // generate random indexes up to a maximum of 10
+            let randIndexArr = [0];
+            for(let i=0;( i<quotes.length && i<15 );i++) {
+              let newRand = Math.floor(Math.random() * quotes.length);
+              if (!randIndexArr.includes(newRand)) {
+                randIndexArr[i] = newRand;
+              } else {
+                i = i-1;
+              }
+            }
+            
+            // select random quotes
+            let randQuotes = []; 
+            randIndexArr.forEach( (el,i) => {
+              randQuotes[i] = quotes[el];
+            })
+            console.log(randIndexArr);
+            console.log(randQuotes);
+            
+            res.render('user/home', {quotesList : randQuotes, title: 'Random quotes'});
         })
         .catch(err  => console.log(err));
 });

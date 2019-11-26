@@ -100,7 +100,21 @@ form {
 a {
   color: #00B7FF;
 }
-
+.home-header {
+  display: flex;
+  justify-content: center;
+  height: 33px;
+  align-items: center;
+  a {
+    outline: none;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    &:active {
+      background-color: #b6b6b6;
+    }
+  }
+}
 .quote-card {
   display: flex;
   flex-direction: column;

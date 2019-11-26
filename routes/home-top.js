@@ -97,8 +97,13 @@ router.get('/', (req,res,next) => {
     Quotes.find()
         .populate('author')
         .then((quotes) => {
-            quotes = quotes.reverse();
-            res.render('user/home', {quotesList : quotes, title: 'All quotes'});
+            // sort quotes
+            quotes.sort( (a,b) => {
+              return b.likes.length - a.likes.length;
+            })
+            // select only top 15
+            top15Quotes = quotes.slice(0,15)
+            res.render('user/home', {quotesList : top15Quotes, title: 'Top 15 quotes'});
         })
         .catch(err  => console.log(err));
 });

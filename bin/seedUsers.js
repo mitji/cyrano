@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
+// - specify how many salt rounds
+const saltRounds = 10;
+
 require('dotenv').config();
 
 const users = [
@@ -47,7 +51,13 @@ const users = [
 
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then( () => {
-    return User.create(users);
+    const encrypUsers = users.map(user => {
+      const salt = bcrypt.genSaltSync(saltRounds);
+      user.password = bcrypt.hashSync(user.password,salt);
+      console.log(user.password);
+      return user
+    })
+    return User.create(encrypUsers);
   })
   .then( (insertedDocuments) => {
     console.log('Inserted documents: ', insertedDocuments.length);
