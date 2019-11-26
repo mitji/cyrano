@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const Quote = require('../models/Quote');
 const User = require('../models/User');
 
+require('dotenv').config();
+
 const quotes = [
   [{
     text: 'Tus imperfecciones te convierten en la mujer perfect',
@@ -51,7 +53,7 @@ const quotes = [
   }],
 ]
 
-mongoose.connect('mongodb://localhost:27017/cyranoDb', {useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then( () => {
     User.find()
       .then(users => {
