@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/mitji/cyrano/issues"
   },
-  "homepage": "https://github.com/mitji/cyrano#readme"
+  "homepage": "https://github.com/mitji/cyrano#readme",
+  "engines": {
+    "node": "10.x"
+  }
 }
