@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
+require('dotenv').config();
 
 const users = [
   {
@@ -44,7 +45,7 @@ const users = [
   },
 ]
 
-mongoose.connect('mongodb://localhost:27017/cyranoDb', {useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then( () => {
     return User.create(users);
   })
