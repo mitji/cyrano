@@ -6,11 +6,14 @@ body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100vh;
   box-sizing: border-box;
-  background: rgb(234,111,111);
+  background: #ea6f6f;
   background: linear-gradient(90deg, rgba(234,111,111,1) 35%, rgba(253,171,160,0.7245273109243697) 100%);
+  // background: rgb(2,0,36);
+  // background: linear-gradient(90deg, rgba(2,0,36,1) 30%, rgba(89,45,89,1) 100%, rgba(0,212,255,1) 100%);
 }
 main {
   padding: 20px 20px 48px;
+  margin-bottom: 20px;
 }
 
 .form-title {
@@ -97,9 +100,7 @@ form {
 a {
   color: #00B7FF;
 }
-.quotes-container {
-  margin-bottom: 15px;
-}
+
 .quote-card {
   display: flex;
   flex-direction: column;
@@ -133,6 +134,9 @@ a {
       }
     }
   }
+  form {
+    flex-direction: row;
+  }
 }
 nav {
   position: fixed;
@@ -141,6 +145,7 @@ nav {
   width: 100%;
   padding: 15px 0;
   background-color: #fafbfa;
+  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.75);
   img {
     width: 20px;
   };
@@ -189,13 +194,32 @@ form {
 
 // profile
 .profile {
-  &__img {
-    width: 50px;
-    height: 50px;
-    border-radius: 20px;
-    img {
+  .user{
+    display: flex;
+    flex-direction: column;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    &__img {
       width: 50px;
       height: 50px;
+      border-radius: 30px;
+    }
+    h1 {
+      width: 100%;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      border-radius: 5px;
+      padding: 4px 8px;
+      text-decoration: none;
+      color: #4a4a4a;
+      height: 23px;
+      bottom: 0;
     }
   }
   &__selector {

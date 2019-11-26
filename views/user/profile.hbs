@@ -1,26 +1,27 @@
 <main class="profile">
-  <div class="profile__img">
-    <img  src="{{user.pictureUrl}}" alt="">
-  </div>
-  <h1>{{user.username}}</h1>
-  <p>{{user.bio}}</p>
-
-  <div>
-    <a href="/edit-profile" >Edit profile</a>
-  </div>
-  <div class="profile__selector">
+  <section class="user">
+    <div class="user__top">
+      <img class="user__img" src="{{user.pictureUrl}}" alt="">
+      <a href="/edit-profile" >Edit profile</a>
+    </div>
+    <h1>{{user.username}}</h1>
+    <p>{{user.bio}}</p>
+    
+  </section>
+  
+  <section class="profile__selector">
     <button id="btn-my-quotes" class="selected">My quotes</button>
     <button id="btn-fav-quotes" class="not-selected">Fav quotes</button>
-  </div>
-  <div class="profile__my-quotes">
+  </section>
+  <section class="profile__my-quotes">
     {{#each quotes}}
       <div class="quote-card">
         <p>{{this.text}}</p>
         <span>Likes {{this.likes.length}}</span>
       </div>
     {{/each}}
-  </div>
-  <div class="profile__fav-quotes">
+  </section>
+  <section class="profile__fav-quotes">
     {{#each userFav}}
     <div class="quote-card">
       <p>{{this.text}}</p>
@@ -28,7 +29,7 @@
       <span>Likes {{this.likes.length}}</span>
     </div>  
     {{/each}}
-  </div>
+  </section>
   {{>navbar}}
 </main>
 
