@@ -95,7 +95,6 @@ router.get('/', (req,res,next) => {
         .then((quotes) => {
             const userId = req.session.currentUser._id;
 
-            Users.findOne()
             // check likes
             quotes = quotes.map( quote => {
                 quote.likeStatus = false;
@@ -110,10 +109,8 @@ router.get('/', (req,res,next) => {
                 Users.findOne({_id: userId})
                     .then( user => {   
                         user.favorites.forEach(favId => {
-                            console.log('favId: ', typeof favId);
-                            console.log('quote id: ', typeof quote._id);
                             
-                            if(favId === quote._id) {
+                            if(favId.toString() == quote._id.toString()) {
                                 console.log('MATCH!!');
                                 console.log('favId', favId);
                                 console.log('quoteId', quote._id);

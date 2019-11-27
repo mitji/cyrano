@@ -121,6 +121,21 @@ router.get('/fav', (req, res, next) => {
                         return;
                     }
                 });
+                // check if quote is in user favs
+                quote.favStatus = false;
+                Users.findOne({_id: userId})
+                    .then( user => {   
+                        user.favorites.forEach(favId => {
+                            
+                            if(favId.toString() == quote._id.toString()) {
+                                console.log('MATCH!!');
+                                console.log('favId', favId);
+                                console.log('quoteId', quote._id);
+                                quote.favStatus = true;
+                                return;
+                            }
+                        }) 
+                    })
                 return quote;
             });
 
