@@ -2,11 +2,6 @@
 const likeForms = document.querySelectorAll('.like-form');
 const favForms = document.querySelectorAll('.fav-form');
 
-// select buttons
-
-// const likeBtn = document.getElementById('#like-btn');
-// const likesText = document.getElementById('#likes-text');
-
 // POST create new like
 
 likeForms.forEach((form) => {
@@ -70,11 +65,11 @@ favForms.forEach((form) => {
 
 
 // handle header selector
-// const homeTitle = document.querySelector('h1');
-// const lastSel = document.querySelector('first-selector');
+// const lastSel = document.getElementById('first-selector');
 // const topSel = document.querySelector('second-selector');
 // const randomSel = document.querySelector('third-selector');
-// console.log('innn');
+const currentURL = window.location.href;
+console.log(currentURL);
 
 // console.log(homeTitle.innerHTML);
 // switch(homeTitle.innerHTML) {

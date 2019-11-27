@@ -44,7 +44,7 @@ router.get('/like', (req, res, next) => {
                     res.status(400).send(err)
 
                 });
-                })
+            })
         .catch(err => console.log(err));
     
 })
@@ -88,23 +88,12 @@ router.get('/fav', (req, res, next) => {
         .catch(err => console.log(err));  
   });
 
-router.get('/', (req,res,next) => {
+  router.get('/', (req,res,next) => {
     Quotes.find()
         .populate('author')
         .then((quotes) => {
-            
-            // // check likes of every quote
-            // const userId = req.session.currentUser._id;
-            // quotes = quotes.map( quote => {
-            //     quote.likeStatus = false;
-            //     quote.likes.map( likeId => {
-            //         if(likeId == userId) {
-            //             quote.likeStatus = true;
-            //             return;
-            //         }
-            //     });
-            //     return quotes;
-            // });
+            // sort quotes
+            const userId = req.session.currentUser._id;
 
             // generate random indexes up to a maximum of 10
             let randIndexArr = [0];
@@ -116,14 +105,26 @@ router.get('/', (req,res,next) => {
                 i = i-1;
               }
             }
-            
+
             // select random quotes
             let randQuotes = []; 
             randIndexArr.forEach( (el,i) => {
               randQuotes[i] = quotes[el];              
             })
-            
-            res.render('user/home', {quotesList : randQuotes, title: 'Random quotes'});
+
+            // check likes
+            randQuotes = randQuotes.map( quote => {
+                quote.likeStatus = false;
+                quote.likes.map( likeId => {
+                    if(likeId == userId) {
+                        quote.likeStatus = true;
+                        return;
+                    }
+                });
+                return quote;
+            });
+
+            res.render('user/home', {quotesList : randQuotes, title: 'Top 15 quotes'});
         })
         .catch(err  => console.log(err));
 });
