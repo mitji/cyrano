@@ -71,12 +71,22 @@ favForms.forEach((form) => {
 });
 
 // handle header selector
-// const lastSel = document.getElementById('first-selector');
-// const topSel = document.querySelector('second-selector');
-// const randomSel = document.querySelector('third-selector');
-const currentURL = window.location.href;
-console.log(currentURL);
+const lastSel = document.getElementById('first-selector');
+const topSel = document.getElementById('second-selector');
+const randomSel = document.getElementById('third-selector');
+const currentUrl = window.location.href.split('/')[3];
+console.log('currentUrl: ', currentUrl);
 
+if(currentUrl === 'home') {
+  console.log('home!!!');
+  lastSel.classList.add('home-selected');
+} else if(currentUrl === 'home-top') {
+  console.log('home-top!!!');
+  topSel.classList.add('home-selected');
+} else if(currentUrl === 'home-random') {
+  console.log('home-random!!!');
+  randomSel.classList.add('home-selected');
+} 
 // console.log(homeTitle.innerHTML);
 // switch(homeTitle.innerHTML) {
 //   case 'All quotes':
