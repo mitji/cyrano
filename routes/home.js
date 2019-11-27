@@ -25,7 +25,7 @@ router.get('/like', (req, res, next) => {
             // dislike like
             if (isInLikes) {
                 likesArr.splice(indexOfUserId,1);
-            } else { //like
+            } else { // like
                 likesArr.push(userId);
             }
             
