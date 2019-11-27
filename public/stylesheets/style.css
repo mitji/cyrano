@@ -94,10 +94,6 @@ form button {
   transition: 0.3s;
 }
 
-form button:hover {
-  background-color: #4bb9a3;
-}
-
 form--signup {
   background-color: black;
 }
@@ -242,9 +238,17 @@ form--signup {
   outline: none;
   background: transparent;
   border: none;
-  width: 50px;
+  width: 28px;
   padding: 0;
   margin: 0;
+}
+
+.quote-card__info__actions button:hover {
+  background-color: none;
+}
+
+.quote-card__info__actions button img {
+  width: 28px;
 }
 
 .quote-card form {

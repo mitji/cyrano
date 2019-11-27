@@ -7,7 +7,6 @@ const favForms = document.querySelectorAll('.fav-form');
 // const likeBtn = document.getElementById('#like-btn');
 // const likesText = document.getElementById('#likes-text');
 
-
 // POST create new like
 
 likeForms.forEach((form) => {
@@ -20,9 +19,10 @@ likeForms.forEach((form) => {
 
     const id = form.querySelector('input').value;
     let numLikesSpan = form.querySelector('.likes-text');
+    let likeBtn = form.querySelector('#like-btn');
+    //let dislikeBtn = form.querySelector('#dislike-btn');
     let numLikes = parseInt(numLikesSpan.innerHTML);   
      
-    
     axios
       .get(`/home/like?_id=${id}`)
       .then((response) => {
@@ -32,10 +32,12 @@ likeForms.forEach((form) => {
         if(statusText==='like') {
           numLikes += 1;
           numLikesSpan.innerHTML = numLikes;
+          likeBtn.innerHTML = '<img src="/images/dislike.png" alt="">'
           console.log('QUOTE LIKED');
         } else if (statusText === 'dislike') {
           numLikes -= 1;
           numLikesSpan.innerHTML = numLikes;
+          likeBtn.innerHTML = '<img src="/images/like.png" alt="">'
           console.log('QUOTE DISLIKED');
         }
         
@@ -59,8 +61,7 @@ favForms.forEach((form) => {
     axios
       .get(`/home/fav?_id=${favId}`)
       .then((response) => {
-       
-        console.log('QUOTE TO FAV');
+        console.log(response.data.statusText);
       })
       .catch( (err) => console.log(err));
 
@@ -69,27 +70,27 @@ favForms.forEach((form) => {
 
 
 // handle header selector
-const homeTitle = document.querySelector('h1');
-const lastSel = document.querySelector('first-selector');
-const topSel = document.querySelector('second-selector');
-const randomSel = document.querySelector('third-selector');
-console.log('innn');
+// const homeTitle = document.querySelector('h1');
+// const lastSel = document.querySelector('first-selector');
+// const topSel = document.querySelector('second-selector');
+// const randomSel = document.querySelector('third-selector');
+// console.log('innn');
 
-console.log(homeTitle.innerHTML);
-switch(homeTitle.innerHTML) {
-  case 'All quotes':
-    topSel.classList.remove('home-selected');
-    randomSel.classList.remove('home-selected');
-    lastSel.classList.add('home-selected');
-    break;
-  case 'Top 15 quotes':
-    lastSel.classList.remove('home-selected');
-    randomSel.classList.remove('home-selected');
-    topSel.classList.add('home-selected');
-    break;
-  case 'Random quotes':
-    topSel.classList.remove('home-selected');
-    lastSel.classList.remove('home-selected');
-    randomSel.classList.add('home-selected');
-    break;
-}
+// console.log(homeTitle.innerHTML);
+// switch(homeTitle.innerHTML) {
+//   case 'All quotes':
+//     topSel.classList.remove('home-selected');
+//     randomSel.classList.remove('home-selected');
+//     lastSel.classList.add('home-selected');
+//     break;
+//   case 'Top 15 quotes':
+//     lastSel.classList.remove('home-selected');
+//     randomSel.classList.remove('home-selected');
+//     topSel.classList.add('home-selected');
+//     break;
+//   case 'Random quotes':
+//     topSel.classList.remove('home-selected');
+//     lastSel.classList.remove('home-selected');
+//     randomSel.classList.add('home-selected');
+//     break;
+// }

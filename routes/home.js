@@ -4,9 +4,12 @@ var router = express.Router();
 const Quotes = require('./../models/Quote');
 const Users = require('./../models/User');
 
+let likeStatus = false;
+
 router.get('/like', (req, res, next) => {
     const userId = req.session.currentUser._id;
-
+    console.log('innnnnnnn');
+    
     const {_id} = req.query;
     // get array of likes
     
@@ -27,6 +30,7 @@ router.get('/like', (req, res, next) => {
                 likesArr.splice(indexOfUserId,1);
             } else { // like
                 likesArr.push(userId);
+                //likeStatus = true;
             }
             
             // update likes
@@ -51,36 +55,33 @@ router.get('/like', (req, res, next) => {
 router.get('/fav', (req, res, next) => {
     const userId = req.session.currentUser._id;
     const {_id} = req.query;
+    
     Users.findById({_id: userId})
         .then(user => {
             // get array of favortie quotes
             const favsArr = user.favorites;  
-            console.log(favsArr);    
             let isInFav = false;
-            favsArr.forEach(favId => {
-                console.log('favId:', favId);
-                console.log('quoteId',  _id);
+            favsArr.forEach((favId,i) => {
                 if(favId == _id) {
                     isInFav = true;
+                    indexOfQuoteId = i;
                     return;
                 }
             });
-            // update like
+            // remove quote from favs 
             if (isInFav) {
-                console.log("You've already added to favorites!");
-                res.status(200).send();
-                return;
+                favsArr.splice(indexOfQuoteId,1);
+            } else { // add to favs
+                favsArr.push(_id);
             }
-            console.log('-----New fav!'); 
-            console.log('- initial favs', user.favorites);
-            favsArr.push(_id);
-            console.log('- updated favs',favsArr); 
-            console.log('isInFav',isInFav);
             
             Users.updateOne({_id: userId}, {favorites: favsArr})
                 .then(quote => {                    
-                    console.log('favorites update');
-                    res.status(200).send();
+                    if(isInFav) {
+                        res.status(200).send({statusText: 'remove from fav'})
+                    } else {
+                        res.status(200).send({statusText: 'add to fav'})
+                    }
                 })
                 .catch(err => {
                     res.status(400).send(err)
@@ -94,7 +95,19 @@ router.get('/', (req,res,next) => {
     Quotes.find()
         .populate('author')
         .then((quotes) => {
-            quotes = quotes.reverse();
+            const userId = req.session.currentUser._id;
+            quotes = quotes.map( quote => {
+                quote.likeStatus = false;
+                quote.likes.map((likeId, i)=> {
+                    if(likeId == userId) {
+                        quote.likeStatus = true;
+                        return;
+                    }
+                });
+                return quote;
+            }
+            ).reverse();
+            console.log('likeStatus',likeStatus);
             res.render('user/home', {quotesList : quotes, title: 'All quotes'});
         })
         .catch(err  => console.log(err));
