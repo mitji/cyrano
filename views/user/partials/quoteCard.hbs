@@ -6,7 +6,6 @@
       <form class="like-form" action="/home/like?_id={{this._id}}" method="POST">
         <input type="text" value='{{this._id}}' style="display:none">
         <span class="likes-text">{{this.likes.length}}</span>
-        
           <button id="like-btn" type="submit">
             {{#if this.likeStatus}}
               <img src="/images/dislike.png" alt="">
@@ -27,6 +26,12 @@
         </button>
       </form>
     </div>
+    {{#if this.isInProfile}}
+      <form class="delete-userQ-form">  
+        <input type="text" value='{{this._id}}' style="display:none">
+        <button id="delete-userQ-quotes" type="submit" >Delete quote</button>
+      </form>
+    {{/if}}
   </div>
 </div>
 

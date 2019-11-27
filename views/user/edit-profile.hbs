@@ -25,7 +25,9 @@
         <input type='text' name='bio' value="{{user.bio}}">
 
         <button type='submit'>edit profile</button>
-        <a href="/delete">Delete profile</a>
+    </form>
+    <form action="/edit-profile/delete/{{user._id}}" method="post">
+        <button><a>Delete profile</a></button>
     </form>
     {{> navbar}}
 </main>

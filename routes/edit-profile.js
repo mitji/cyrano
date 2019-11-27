@@ -2,10 +2,19 @@ var express = require('express');
 var router = express.Router();
 const parser = require('../config/cloudinary');
 
-const Quotes = require('./../models/Quote');
 const Users = require('./../models/User');
 
-
+// delete profile
+router.post('/delete/:id', (req, res, next) => {
+    const { userId } = req.params;
+    Users.deleteOne({_id:userId})
+        .then( (user) => {
+            console.log(user);
+            
+            res.redirect('/');
+        })
+        .catch( err => console.log(err));
+});
 
 router.post('/', parser.single('picture'), (req,res,next) => {
     const userId = req.session.currentUser._id;
@@ -28,7 +37,6 @@ router.post('/', parser.single('picture'), (req,res,next) => {
 
 });
 
-
 router.get('/', ( req,res,next) => {
     const userId = req.session.currentUser._id;
     Users.findById({_id: userId})
@@ -38,7 +46,5 @@ router.get('/', ( req,res,next) => {
 
 
 });
-
-
 
 module.exports=router;

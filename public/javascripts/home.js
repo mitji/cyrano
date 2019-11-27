@@ -70,7 +70,6 @@ favForms.forEach((form) => {
   });
 });
 
-
 // handle header selector
 // const lastSel = document.getElementById('first-selector');
 // const topSel = document.querySelector('second-selector');

@@ -25,27 +25,3 @@
   </section>
   {{>navbar}}
 </main>
-
-<script>
-  let btnMyQuotes = document.querySelector('#btn-my-quotes');
-  let btnFavQuotes = document.querySelector('#btn-fav-quotes');
-  let MyQuotesDiv = document.querySelector('.profile__my-quotes');
-  let MyFavQuotesDiv = document.querySelector('.profile__fav-quotes');
-
-  btnMyQuotes.addEventListener('click', () => {
-    MyQuotesDiv.style.display = 'block';
-    MyFavQuotesDiv.style.display = 'none';
-    btnMyQuotes.classList.remove("not-selected");
-    btnMyQuotes.classList.add("selected");
-    btnFavQuotes.classList.remove("selected");
-    btnFavQuotes.classList.add("not-selected");
-  });
-  btnFavQuotes.addEventListener('click', () => {
-    MyQuotesDiv.style.display = 'none';
-    MyFavQuotesDiv.style.display = 'block';
-    btnFavQuotes.classList.remove("not-selected");
-    btnFavQuotes.classList.add("selected");
-    btnMyQuotes.classList.remove("selected");
-    btnMyQuotes.classList.add("not-selected");
-  });
-</script>

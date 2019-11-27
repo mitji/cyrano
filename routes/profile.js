@@ -4,6 +4,17 @@ var router = express.Router();
 const Quotes = require('./../models/Quote');
 const Users = require('./../models/User');
 
+router.post('/delete/:id', (req,res,next) => {
+    const { id } = req.params
+    console.log("paramss de get ",id);
+    Quotes.findByIdAndDelete(id)
+    .then(()=>{
+      res.render('users/profile')
+    })
+    .catch((err) => {console.log(err);
+    })
+});
+
 router.get('/like', (req, res, next) => {
   const userId = req.session.currentUser._id;    
   const {_id} = req.query;
@@ -117,6 +128,8 @@ router.get('/', (req,res,next) => {
         // check likes and favs for user quotes
         user.quotes = user.quotes.map( quote => {
           quote.likeStatus = false;
+          // add remove button
+          quote.isInProfile = true;
           quote.likes.map((likeId, i)=> {
               if(likeId == userId) {
                   quote.likeStatus = true;

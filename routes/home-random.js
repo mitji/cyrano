@@ -139,7 +139,7 @@ router.get('/fav', (req, res, next) => {
                 return quote;
             });
 
-            res.render('user/home', {quotesList : randQuotes, title: 'Top 15 quotes'});
+            res.render('user/home', {quotesList : randQuotes, title: 'Random quotes'});
         })
         .catch(err  => console.log(err));
 });
