@@ -76,16 +76,16 @@ router.get('/fav', (req, res, next) => {
             Users.updateOne({_id: userId}, {favorites: favsArr})
                 .then(quote => {                    
                     if(isInFav) {
-                        res.status(200).send({statusText: 'remove from fav'})
+                        res.status(200).send({statusText: 'fav'})
                     } else {
-                        res.status(200).send({statusText: 'add to fav'})
+                        res.status(200).send({statusText: 'unfav'})
                     }
                 })
                 .catch(err => {
                     res.status(400).send(err)
 
                 });
-                })
+        })
         .catch(err => console.log(err));  
   });
 
@@ -94,17 +94,39 @@ router.get('/', (req,res,next) => {
         .populate('author')
         .then((quotes) => {
             const userId = req.session.currentUser._id;
+
+            Users.findOne()
+            // check likes
             quotes = quotes.map( quote => {
                 quote.likeStatus = false;
                 quote.likes.map((likeId, i)=> {
                     if(likeId == userId) {
                         quote.likeStatus = true;
-                        return;
                     }
                 });
+
+                // check if quote is in user favs
+                quote.favStatus = false;
+                Users.findOne({_id: userId})
+                    .then( user => {   
+                        user.favorites.forEach(favId => {
+                            console.log('favId: ', typeof favId);
+                            console.log('quote id: ', typeof quote._id);
+                            
+                            if(favId === quote._id) {
+                                console.log('MATCH!!');
+                                console.log('favId', favId);
+                                console.log('quoteId', quote._id);
+                                quote.favStatus = true;
+                                return;
+                            }
+                        }) 
+                    })
+                    .catch(err => console.log(err));
                 return quote;
             }).reverse();
-            console.log('likeStatus',likeStatus);
+            console.log(quotes[0].favStatus);
+            
             res.render('user/home', {quotesList : quotes, title: 'All quotes'});
         })
         .catch(err  => console.log(err));

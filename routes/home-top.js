@@ -99,7 +99,6 @@ router.get('/', (req,res,next) => {
                 quote.likes.map( likeId => {
                     if(likeId == userId) {
                         quote.likeStatus = true;
-                        return;
                     }
                 });
                 return quote;

@@ -1,6 +1,5 @@
 <div class="quote-card">
   <p>{{this.text}}</p>
-  <p>Like status: {{this.likeStatus}}</p>
   <div class="quote-card__info">
     <p class="quote-card__info__username">{{this.author.username}}</p>
     <div class="quote-card__info__actions">
@@ -14,12 +13,18 @@
             {{else}}
               <img src="/images/like.png" alt="">
             {{/if}}
-          </button>
-        
+          </button> 
       </form>
       <form class="fav-form" action="/home/fav?_id={{this._id}}" method="POST">
         <input type="text" value='{{this._id}}' style="display:none">
-        <button id="fav-btn" type="submit">Fav</button>
+        <button id="fav-btn" type="submit">
+          {{#if this.favStatus}}
+            <img src="/images/remove-fav.png" alt="">
+          {{else}}
+            <img src="/images/add-fav.png" alt="">
+          {{/if}}
+          
+        </button>
       </form>
     </div>
   </div>

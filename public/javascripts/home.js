@@ -2,6 +2,7 @@
 const likeForms = document.querySelectorAll('.like-form');
 const favForms = document.querySelectorAll('.fav-form');
 
+
 // POST create new like
 
 likeForms.forEach((form) => {
@@ -15,16 +16,13 @@ likeForms.forEach((form) => {
     const id = form.querySelector('input').value;
     let numLikesSpan = form.querySelector('.likes-text');
     let likeBtn = form.querySelector('#like-btn');
-    //let dislikeBtn = form.querySelector('#dislike-btn');
     let numLikes = parseInt(numLikesSpan.innerHTML);   
      
     axios
       .get(`/home/like?_id=${id}`)
       .then((response) => {
-        console.log('response', response.data.statusText);
-        const {statusText} = response.data;
-        
-        if(statusText==='like') {
+        const {statusText} = response.data;     
+        if(statusText === 'like') {
           numLikes += 1;
           numLikesSpan.innerHTML = numLikes;
           likeBtn.innerHTML = '<img src="/images/dislike.png" alt="">'
@@ -49,14 +47,23 @@ favForms.forEach((form) => {
   form.addEventListener('click', (e) =>{
 
     // prevent the form reloading the page
-
     e.preventDefault();
+
+    const favBtn = form.querySelector('#fav-btn');
 
     const favId = form.querySelector('input').value; 
     axios
       .get(`/home/fav?_id=${favId}`)
       .then((response) => {
-        console.log(response.data.statusText);
+        const {statusText} = response.data;
+        if(statusText === 'fav') {
+          favBtn.innerHTML = '<img src="/images/add-fav.png" alt="">';
+          console.log('un fav');
+        } else if (statusText === 'unfav') {
+          favBtn.innerHTML = '<img src="/images/remove-fav.png" alt="">';
+          console.log('fav');
+          
+        }
       })
       .catch( (err) => console.log(err));
 

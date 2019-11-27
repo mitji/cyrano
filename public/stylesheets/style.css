@@ -216,7 +216,7 @@ form--signup {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .quote-card__info form {
@@ -249,6 +249,19 @@ form--signup {
 
 .quote-card__info__actions button img {
   width: 28px;
+  margin: 0 5px;
+}
+
+.quote-card__info__actions #fav-btn img {
+  margin-top: -4px !important;
+}
+
+.quote-card__info__actions #fav-btn, .quote-card__info__actions #like-btn {
+  margin: 0 5px;
+}
+
+.quote-card__info__actions .likes-text {
+  color: #515F78;
 }
 
 .quote-card form {
