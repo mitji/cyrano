@@ -4,43 +4,41 @@ var router = express.Router();
 const Quotes = require('./../models/Quote');
 const Users = require('./../models/User');
 
-router.get('/like', (req, res, next) => {
-    const userId = req.session.currentUser._id;
+let likeStatus = false;
 
+router.get('/like', (req, res, next) => {
+    const userId = req.session.currentUser._id;    
     const {_id} = req.query;
+
     // get array of likes
-    
     Quotes.findById({_id: _id})
         .then(quote => {
-            const likesArr = quote.likes;
+            let likesArr = quote.likes;
             let isInLikes = false;
-            likesArr.forEach(likeId => {
-                console.log('likeId:', typeof likeId);
-                console.log('userId', typeof userId);
+            let indexOfUserId;
+            likesArr.forEach((likeId, i)=> {
                 if(likeId == userId) {
                     isInLikes = true;
+                    indexOfUserId = i;
                     return;
                 }
             });
-            // update like
+            // dislike like
             if (isInLikes) {
-                console.log("You've already given like to this quote!");
-                //res.status(200).send()
-                return;
+                likesArr.splice(indexOfUserId,1);
+            } else { // like
+                likesArr.push(userId);
             }
-            console.log('-----New like!'); 
-            console.log('- initial likes', quote.likes);
-            likesArr.push(userId);
-            console.log('- updated likes',likesArr); 
-            console.log('isInLikes',isInLikes);
             
+            // update likes
             Quotes.updateOne({_id: _id}, {likes: likesArr})
                 .then(quote => {
-                    console.log('likes update');
-                    //res.redirect('/home');
-                    //console.log(quote.likes.length);
-                    
-                    res.status(200).send()
+                    console.log('likes array updated', likesArr);
+                    if(isInLikes) {
+                        res.status(200).send({statusText: 'dislike'})
+                    } else {
+                        res.status(200).send({statusText: 'like'})
+                    }
                 })
                 .catch(err => {
                     res.status(400).send(err)
@@ -54,36 +52,33 @@ router.get('/like', (req, res, next) => {
 router.get('/fav', (req, res, next) => {
     const userId = req.session.currentUser._id;
     const {_id} = req.query;
+    
     Users.findById({_id: userId})
         .then(user => {
             // get array of favortie quotes
             const favsArr = user.favorites;  
-            console.log(favsArr);    
             let isInFav = false;
-            favsArr.forEach(favId => {
-                console.log('favId:', favId);
-                console.log('quoteId',  _id);
+            favsArr.forEach((favId,i) => {
                 if(favId == _id) {
                     isInFav = true;
+                    indexOfQuoteId = i;
                     return;
                 }
             });
-            // update like
+            // remove quote from favs 
             if (isInFav) {
-                console.log("You've already added to favorites!");
-                res.status(200).send();
-                return;
+                favsArr.splice(indexOfQuoteId,1);
+            } else { // add to favs
+                favsArr.push(_id);
             }
-            console.log('-----New fav!'); 
-            console.log('- initial favs', user.favorites);
-            favsArr.push(_id);
-            console.log('- updated favs',favsArr); 
-            console.log('isInFav',isInFav);
             
             Users.updateOne({_id: userId}, {favorites: favsArr})
                 .then(quote => {                    
-                    console.log('favorites update');
-                    res.status(200).send();
+                    if(isInFav) {
+                        res.status(200).send({statusText: 'remove from fav'})
+                    } else {
+                        res.status(200).send({statusText: 'add to fav'})
+                    }
                 })
                 .catch(err => {
                     res.status(400).send(err)
@@ -91,14 +86,24 @@ router.get('/fav', (req, res, next) => {
                 });
                 })
         .catch(err => console.log(err));  
-  })
+  });
 
 router.get('/', (req,res,next) => {
     Quotes.find()
         .populate('author')
         .then((quotes) => {
             // sort quotes
-            quotes.sort( (a,b) => {
+            const userId = req.session.currentUser._id;
+            quotes = quotes.map( quote => {
+                quote.likeStatus = false;
+                quote.likes.map( likeId => {
+                    if(likeId == userId) {
+                        quote.likeStatus = true;
+                        return;
+                    }
+                });
+                return quote;
+            }).sort( (a,b) => {
               return b.likes.length - a.likes.length;
             })
             // select only top 15

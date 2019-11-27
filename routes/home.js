@@ -7,12 +7,10 @@ const Users = require('./../models/User');
 let likeStatus = false;
 
 router.get('/like', (req, res, next) => {
-    const userId = req.session.currentUser._id;
-    console.log('innnnnnnn');
-    
+    const userId = req.session.currentUser._id;    
     const {_id} = req.query;
+
     // get array of likes
-    
     Quotes.findById({_id: _id})
         .then(quote => {
             let likesArr = quote.likes;
@@ -89,7 +87,7 @@ router.get('/fav', (req, res, next) => {
                 });
                 })
         .catch(err => console.log(err));  
-  })
+  });
 
 router.get('/', (req,res,next) => {
     Quotes.find()
@@ -105,8 +103,7 @@ router.get('/', (req,res,next) => {
                     }
                 });
                 return quote;
-            }
-            ).reverse();
+            }).reverse();
             console.log('likeStatus',likeStatus);
             res.render('user/home', {quotesList : quotes, title: 'All quotes'});
         })
