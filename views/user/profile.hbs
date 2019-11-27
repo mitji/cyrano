@@ -15,19 +15,12 @@
   </section>
   <section class="profile__my-quotes">
     {{#each quotes}}
-      <div class="quote-card">
-        <p>{{this.text}}</p>
-        <span>Likes {{this.likes.length}}</span>
-      </div>
+      {{>quoteCard this}}
     {{/each}}
   </section>
   <section class="profile__fav-quotes">
     {{#each userFav}}
-    <div class="quote-card">
-      <p>{{this.text}}</p>
-      <p class="quote-card__info__username">{{this.username}}</p>
-      <span>Likes {{this.likes.length}}</span>
-    </div>  
+      {{>quoteCard this}}
     {{/each}}
   </section>
   {{>navbar}}
