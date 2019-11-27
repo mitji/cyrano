@@ -198,7 +198,24 @@ ul {
   }
 }
 
-
+// search
+.search-quote {
+  max-width: 300px;
+  margin: 15px auto;
+  input {
+    padding: 0 50px 0 10px;
+  }
+  button {
+    background: transparent;
+    margin-top: -43px;
+    width: 30px;
+    align-self: flex-end;
+    margin-right: 5px;
+    img {
+      width: 21px;
+    }
+  }
+}
 // /add
 .private-header {
   display: flex;
@@ -220,6 +237,9 @@ ul {
   }
 }
 form {
+  input {
+    font-size: 16px;
+  }
   label {
     width: 85%;
     margin-bottom: 15px;

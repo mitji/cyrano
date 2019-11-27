@@ -26,9 +26,19 @@ likeForms.forEach((form) => {
     axios
       .get(`/home/like?_id=${id}`)
       .then((response) => {
-        numLikes += 1;
-        numLikesSpan.innerHTML = numLikes;
-        console.log('QUOTE LIKED');
+        console.log('response', response.data.statusText);
+        const {statusText} = response.data;
+        
+        if(statusText==='like') {
+          numLikes += 1;
+          numLikesSpan.innerHTML = numLikes;
+          console.log('QUOTE LIKED');
+        } else if (statusText === 'dislike') {
+          numLikes -= 1;
+          numLikesSpan.innerHTML = numLikes;
+          console.log('QUOTE DISLIKED');
+        }
+        
       })
       .catch( (err) => console.log(err));
 

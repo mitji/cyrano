@@ -12,35 +12,32 @@ router.get('/like', (req, res, next) => {
     
     Quotes.findById({_id: _id})
         .then(quote => {
-            const likesArr = quote.likes;
+            let likesArr = quote.likes;
             let isInLikes = false;
-            likesArr.forEach(likeId => {
-                console.log('likeId:', typeof likeId);
-                console.log('userId', typeof userId);
+            let indexOfUserId;
+            likesArr.forEach((likeId, i)=> {
                 if(likeId == userId) {
                     isInLikes = true;
+                    indexOfUserId = i;
                     return;
                 }
             });
-            // update like
+            // dislike like
             if (isInLikes) {
-                console.log("You've already given like to this quote!");
-                //res.status(200).send()
-                return;
+                likesArr.splice(indexOfUserId,1);
+            } else { //like
+                likesArr.push(userId);
             }
-            console.log('-----New like!'); 
-            console.log('- initial likes', quote.likes);
-            likesArr.push(userId);
-            console.log('- updated likes',likesArr); 
-            console.log('isInLikes',isInLikes);
             
+            // update likes
             Quotes.updateOne({_id: _id}, {likes: likesArr})
                 .then(quote => {
-                    console.log('likes update');
-                    //res.redirect('/home');
-                    //console.log(quote.likes.length);
-                    
-                    res.status(200).send()
+                    console.log('likes array updated', likesArr);
+                    if(isInLikes) {
+                        res.status(200).send({statusText: 'dislike'})
+                    } else {
+                        res.status(200).send({statusText: 'like'})
+                    }
                 })
                 .catch(err => {
                     res.status(400).send(err)

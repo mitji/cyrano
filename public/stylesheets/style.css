@@ -284,6 +284,28 @@ ul a {
   text-decoration: none;
 }
 
+.search-quote {
+  max-width: 300px;
+  margin: 15px auto;
+}
+
+.search-quote input {
+  padding: 0 50px 0 10px;
+}
+
+.search-quote button {
+  background: transparent;
+  margin-top: -43px;
+  width: 30px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-right: 5px;
+}
+
+.search-quote button img {
+  width: 21px;
+}
+
 .private-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -313,6 +335,10 @@ ul a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+form input {
+  font-size: 16px;
 }
 
 form label {
