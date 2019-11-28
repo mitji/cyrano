@@ -28,10 +28,11 @@
     </div>
   </div>
   {{#if this.isInProfile}} 
-      <form class="delete-userQ-form">
-        <input type="text" value='{{this._id}}' style="display:none">
-        <button id="delete-userQ-quotes" type="submit"><img src="/images/bin.png" alt=""></button>
-      </form>
+    <form class="delete-userQ-form">
+      <input type="text" value='{{this._id}}' style="display:none">
+      <button id="delete-userQ-quotes" type="submit"><img src="/images/bin.png" alt=""></button>
+    </form>
   {{/if}}
 </div>
 
+<a class="whatsapp-btn" href="https://api.whatsapp.com/send?text={{this.text}}">Share in whatsapp</a>
