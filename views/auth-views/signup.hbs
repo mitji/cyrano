@@ -1,4 +1,4 @@
-<h1 class="form-title" >Become a new Cyrano</h1>
+<h1 class="form-title" >All you need is... Cyrano</h1>
 <main>
   <form action='/auth/signup' method='POST' class="form form--signup" enctype="multipart/form-data">
     <label for=''>Username</label>
@@ -11,7 +11,10 @@
     <input type='email' name='email' placeholder="Cyrano">
 
     <label for=''>Picture</label>
-    <input type='file' name='picture'>
+    <label class="custom-file-upload">
+      <input id="up-image" type="file" name='picture'>
+      <span>Upload pic</span>
+    </label>
 
     <label for=''>Bio</label>
     <input type='text' name='bio' placeholder="catch phrase ">

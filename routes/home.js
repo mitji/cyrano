@@ -108,12 +108,8 @@ router.get('/', (req,res,next) => {
                 quote.favStatus = false;
                 Users.findOne({_id: userId})
                     .then( user => {   
-                        user.favorites.forEach(favId => {
-                            
+                        user.favorites.forEach(favId => {          
                             if(favId.toString() == quote._id.toString()) {
-                                console.log('MATCH!!');
-                                console.log('favId', favId);
-                                console.log('quoteId', quote._id);
                                 quote.favStatus = true;
                                 return;
                             }

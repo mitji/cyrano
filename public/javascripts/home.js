@@ -87,21 +87,3 @@ if(currentUrl === 'home') {
   console.log('home-random!!!');
   randomSel.classList.add('home-selected');
 } 
-// console.log(homeTitle.innerHTML);
-// switch(homeTitle.innerHTML) {
-//   case 'All quotes':
-//     topSel.classList.remove('home-selected');
-//     randomSel.classList.remove('home-selected');
-//     lastSel.classList.add('home-selected');
-//     break;
-//   case 'Top 15 quotes':
-//     lastSel.classList.remove('home-selected');
-//     randomSel.classList.remove('home-selected');
-//     topSel.classList.add('home-selected');
-//     break;
-//   case 'Random quotes':
-//     topSel.classList.remove('home-selected');
-//     lastSel.classList.remove('home-selected');
-//     randomSel.classList.add('home-selected');
-//     break;
-// }

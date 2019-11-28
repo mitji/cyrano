@@ -139,9 +139,6 @@ router.get('/', (req,res,next) => {
           quote.favStatus = false;
           favsToPrint.forEach(fav => {
               if(fav._id.toString() == quote._id.toString()) {
-                  console.log('MATCH!!');
-                  console.log('favId', fav._id);
-                  console.log('quoteId', quote._id);
                   quote.favStatus = true;
                   return;
               }

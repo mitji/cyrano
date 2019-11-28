@@ -1,3 +1,22 @@
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 11px 12px;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,12 +46,25 @@ input, button {
   font-size: 16px;
 }
 
+.logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.logo-container img {
+  width: 300px;
+}
+
 .form-title {
   font-family: 'Caveat', cursive;
   text-align: center;
   color: #574144;
   width: 350px;
-  margin: 30px auto 0;
+  margin: 0 auto;
   font-size: 40px;
 }
 
@@ -57,11 +89,14 @@ form {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 15px;
+  max-width: 400px;
+  margin: 30px auto 0;
+  font-size: 16px;
 }
 
 form label {
   width: 300px;
-  margin-top: 10px;
+  margin-bottom: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: #2F4858;
@@ -74,8 +109,8 @@ form input {
   width: 300px;
   padding: 5px 7px;
   margin: 5px 0;
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(142, 142, 142, 0.82);
-          box-shadow: 0px 0px 5px 0px rgba(142, 142, 142, 0.82);
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(142, 142, 142, 0.82);
+          box-shadow: 0px 0px 2px 0px rgba(142, 142, 142, 0.82);
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -89,8 +124,8 @@ form button {
           justify-content: center;
   -ms-flex-item-align: center;
       align-self: center;
-  background-color: #ace8dc;
-  color: #5d5d5d;
+  background-color: #e10100ad;
+  color: #f3f3f3;
   font-weight: bold;
   padding: 10px;
   margin-top: 15px;
@@ -119,8 +154,9 @@ form--signup {
 
 .form-link a {
   text-decoration: none;
-  color: white;
+  color: #2F4858;
   margin-left: 7px;
+  font-weight: bold;
 }
 
 .form-link a:hover {
@@ -316,24 +352,26 @@ ul a {
 }
 
 .search-quote {
-  max-width: 300px;
+  max-width: 400px;
   margin: 15px auto;
 }
 
 .search-quote input {
   padding: 0 50px 0 10px;
+  width: 100%;
+  height: 45px;
 }
 
 .search-quote button {
   background: transparent;
-  margin-top: -43px;
+  margin-top: -48px;
   width: 30px;
   -ms-flex-item-align: end;
       align-self: flex-end;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
-.search-quote button img {
+.search-quote img {
   width: 21px;
 }
 
@@ -366,15 +404,6 @@ ul a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-form input {
-  font-size: 16px;
-}
-
-form label {
-  width: 85%;
-  margin-bottom: 15px;
 }
 
 form textarea {
@@ -462,6 +491,8 @@ form textarea {
   color: #4a4a4a;
   height: 23px;
   bottom: 0;
+  -webkit-box-shadow: 0px 1px 2px 0 #2F4858;
+          box-shadow: 0px 1px 2px 0 #2F4858;
 }
 
 .profile__selector {
@@ -518,6 +549,16 @@ form textarea {
 .profile__fav-quotes {
   margin-top: 70px;
   display: none;
+}
+
+.profile .delete-profile {
+  margin-top: 0;
+}
+
+.profile .delete-profile button {
+  background: transparent;
+  color: #e10100ad;
+  border: 1px solid #e10100ad;
 }
 
 .logout-btn {

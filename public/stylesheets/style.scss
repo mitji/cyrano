@@ -1,5 +1,17 @@
 $blue-dark: #2F4858;
-
+input[type="file"] {
+  display: none;
+}
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 11px 12px;
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
 * {
   margin: 0;
   padding: 0;
@@ -28,13 +40,19 @@ main {
 input, button {
   font-size: 16px;
 }
-
+.logo-container {
+  display: flex;
+  justify-content: center;
+  img {
+    width: 300px;
+  }
+}
 .form-title {
   font-family: 'Caveat', cursive;
   text-align: center;
   color: #574144;
   width: 350px;
-  margin: 30px auto 0;
+  margin: 0 auto;
   font-size: 40px;
   &--subtitle {
     font-weight: 100;
@@ -48,9 +66,12 @@ form {
   align-items: center;
   flex-direction: column;
   margin-top: 15px;
+  max-width: 400px;
+  margin: 30px auto 0;
+  font-size: 16px;
   label {
     width: 300px;
-    margin-top: 10px;
+    margin-bottom: 15px;
     box-sizing: border-box;
     color: $blue-dark;
   }
@@ -61,15 +82,15 @@ form {
     width: 300px;
     padding: 5px 7px;
     margin: 5px 0;
-    box-shadow: 0px 0px 5px 0px rgba(142, 142, 142, 0.82);
+    box-shadow: 0px 0px 2px 0px rgba(142, 142, 142, 0.82);
     box-sizing: border-box;
   }
   button {
     display: flex;
     justify-content: center;
     align-self: center;
-    background-color: #ace8dc;
-    color: #5d5d5d;
+    background-color: #e10100ad;
+    color: #f3f3f3;
     font-weight: bold;
     padding: 10px;
     margin-top: 15px;
@@ -90,8 +111,9 @@ form {
   justify-content: center;
   a {
     text-decoration: none;
-    color: white;
+    color: $blue-dark;
     margin-left: 7px;
+    font-weight: bold;
     &:hover {
       text-decoration: underline;
     }
@@ -229,22 +251,24 @@ ul {
 
 // search
 .search-quote {
-  max-width: 300px;
+  max-width: 400px;
   margin: 15px auto;
   input {
     padding: 0 50px 0 10px;
+    width: 100%;
+    height: 45px;
   }
   button {
     background: transparent;
-    margin-top: -43px;
+    margin-top: -48px;
     width: 30px;
     align-self: flex-end;
-    margin-right: 5px;
+    margin-right: 10px;
+  }
     img {
       width: 21px;
     }
   }
-}
 // /add
 .private-header {
   display: flex;
@@ -266,13 +290,6 @@ ul {
   }
 }
 form {
-  input {
-    font-size: 16px;
-  }
-  label {
-    width: 85%;
-    margin-bottom: 15px;
-  }
   textarea {
     width: 85%;
     height: 105px;
@@ -337,6 +354,7 @@ form {
       color: #4a4a4a;
       height: 23px;
       bottom: 0;
+      box-shadow: 0px 1px 2px 0 $blue-dark;
     }
   }
   &__selector {
@@ -379,6 +397,14 @@ form {
   &__fav-quotes {
     margin-top: 70px;
     display: none;
+  }
+  .delete-profile {
+    margin-top: 0;
+    button {
+      background: transparent;
+      color: #e10100ad;
+      border: 1px solid #e10100ad;
+    } 
   }
 }
 .logout-btn {

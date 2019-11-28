@@ -7,9 +7,10 @@
     </div>
     <form action="/edit-profile" method="post" enctype="multipart/form-data">
         <img class="user__img" src="{{user.pictureUrl}}" alt="">
-        
-        <label for=''>Picture</label>
-        <input type='file' name='picture'>
+        <label class="custom-file-upload" style="margin-top: 10px;">
+            <input id="up-image" type="file" name='picture'>
+            <span>Change pic</span>
+        </label>
 
         <label for=''>Username</label>
         <input type='text' name='username' value="{{user.username}}">
@@ -24,9 +25,9 @@
         <label for=''>Bio</label>
         <input type='text' name='bio' value="{{user.bio}}">
 
-        <button type='submit'>edit profile</button>
+        <button type='submit'>Edit profile</button>
     </form>
-    <form action="/edit-profile/delete/{{user._id}}" method="post">
+    <form action="/edit-profile/delete/{{user._id}}" method="post" class="delete-profile">
         <button><a>Delete profile</a></button>
     </form>
     {{> navbar}}
