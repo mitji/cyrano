@@ -111,23 +111,23 @@ router.get('/', (req,res,next) => {
                 return quote;
             }).reverse();
 
+            // check favorites
             Users.findOne({_id: userId})
-            .then( user => { 
+                .then( user => { 
 
-                user.favorites.forEach(favId => { 
-                    
-                    quotes.forEach( (quote, i)=> {
-                        if(favId.toString() == quote._id.toString()) {
-                            quote.favStatus = true;
-                            return;
-                        }
-                    })
-                });
+                    user.favorites.forEach(favId => { 
+                        
+                        quotes.forEach( (quote, i)=> {
+                            if(favId.toString() == quote._id.toString()) {
+                                quote.favStatus = true;
+                                return;
+                            }
+                        })
+                    });
 
-                res.render('user/home', {quotesList : quotes, title: 'All quotes'});
-            })
-            .catch(err => console.log(err));
-
+                    res.render('user/home', {quotesList : quotes, title: 'All quotes'});
+                })
+                .catch(err => console.log(err));
         })
         .catch(err  => console.log(err));
     

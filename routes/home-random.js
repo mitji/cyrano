@@ -123,23 +123,24 @@ router.get('/fav', (req, res, next) => {
                 });
                 // check if quote is in user favs
                 quote.favStatus = false;
-                Users.findOne({_id: userId})
-                    .then( user => {   
-                        user.favorites.forEach(favId => {
-                            
-                            if(favId.toString() == quote._id.toString()) {
-                                console.log('MATCH!!');
-                                console.log('favId', favId);
-                                console.log('quoteId', quote._id);
-                                quote.favStatus = true;
-                                return;
-                            }
-                        }) 
-                    })
                 return quote;
             });
 
-            res.render('user/home', {quotesList : randQuotes, title: 'Random quotes'});
+            // check favorites
+            Users.findOne({_id: userId})
+                .then( user => {   
+                    user.favorites.forEach(favId => {
+                        
+                        randQuotes.forEach( (quote, i)=> {
+                            if(favId.toString() == quote._id.toString()) {
+                                quote.favStatus = true;
+                                return;
+                            }
+                        })
+
+                    }) 
+                    res.render('user/home', {quotesList : randQuotes, title: 'Random quotes'});
+                })
         })
         .catch(err  => console.log(err));
 });

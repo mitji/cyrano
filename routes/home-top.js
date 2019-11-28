@@ -101,28 +101,30 @@ router.get('/', (req,res,next) => {
                         quote.likeStatus = true;
                     }
                 });
-                // check if quote is in user favs
                 quote.favStatus = false;
-                Users.findOne({_id: userId})
-                    .then( user => {   
-                        user.favorites.forEach(favId => {
-                            
+                return quote
+            }).sort( (a,b) => {
+                return b.likes.length - a.likes.length;
+            })
+            
+            // check if quote is in user favs
+            Users.findOne({_id: userId})
+                .then( user => {   
+                    user.favorites.forEach(favId => {
+                        
+                        quotes.forEach( (quote, i)=> {
                             if(favId.toString() == quote._id.toString()) {
-                                console.log('MATCH!!');
-                                console.log('favId', favId);
-                                console.log('quoteId', quote._id);
                                 quote.favStatus = true;
                                 return;
                             }
-                        }) 
-                    })
-                return quote;
-            }).sort( (a,b) => {
-              return b.likes.length - a.likes.length;
-            })
-            // select only top 15
-            top15Quotes = quotes.slice(0,15)
-            res.render('user/home', {quotesList : top15Quotes, title: 'Top 15 quotes'});
+                        })
+                    }) 
+
+                    // select only top 15
+                    top15Quotes = quotes.slice(0,15)
+                    res.render('user/home', {quotesList : top15Quotes, title: 'Top 15 quotes'}); 
+                })
+                .catch(err => console.log(err));
         })
         .catch(err  => console.log(err));
 });
