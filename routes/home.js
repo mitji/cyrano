@@ -97,7 +97,9 @@ router.get('/', (req,res,next) => {
 
             // check likes
             quotes = quotes.map( quote => {
+
                 quote.likeStatus = false;
+
                 quote.likes.map((likeId, i)=> {
                     if(likeId == userId) {
                         quote.likeStatus = true;
@@ -106,23 +108,29 @@ router.get('/', (req,res,next) => {
 
                 // check if quote is in user favs
                 quote.favStatus = false;
-                Users.findOne({_id: userId})
-                    .then( user => {   
-                        user.favorites.forEach(favId => {          
-                            if(favId.toString() == quote._id.toString()) {
-                                quote.favStatus = true;
-                                return;
-                            }
-                        }) 
-                    })
-                    .catch(err => console.log(err));
                 return quote;
             }).reverse();
-            console.log(quotes[0].favStatus);
-            
-            res.render('user/home', {quotesList : quotes, title: 'All quotes'});
+
+            Users.findOne({_id: userId})
+            .then( user => { 
+
+                user.favorites.forEach(favId => { 
+                    
+                    quotes.forEach( (quote, i)=> {
+                        if(favId.toString() == quote._id.toString()) {
+                            quote.favStatus = true;
+                            return;
+                        }
+                    })
+                });
+
+                res.render('user/home', {quotesList : quotes, title: 'All quotes'});
+            })
+            .catch(err => console.log(err));
+
         })
         .catch(err  => console.log(err));
+    
 });
 
 module.exports = router;
