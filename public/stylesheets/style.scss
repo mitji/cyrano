@@ -228,14 +228,10 @@ form {
   }
 }
 .whatsapp-btn {
-  background-color: #a8d8a5;
-  color: $blue-dark;
-  font-weight: bold;
-  padding: 5px 10px;
-  margin-top: 12px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  cursor: pointer;
+  width: 30px;
+  img {
+    width: 30px;
+  }
 }
 .delete-userQ-form {
   margin: 15px 0 0;
