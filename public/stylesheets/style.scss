@@ -20,12 +20,8 @@ body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
   min-height: 100vh;
   box-sizing: border-box;
-  background-color: #f3f3f3;
-  // background: rgb(252,238,240);
-  // background: radial-gradient(circle, rgba(252,238,240,1) 35%, rgba(255,188,196,1) 100%);
+  background-color: #fff7f7a6;
   height: 100vh;
-  // background: rgb(2,0,36);
-  // background: linear-gradient(90deg, rgba(2,0,36,1) 30%, rgba(89,45,89,1) 100%, rgba(0,212,255,1) 100%);
 }
 main {
   padding: 20px 20px 48px;
@@ -43,6 +39,7 @@ input, button {
 .logo-container {
   display: flex;
   justify-content: center;
+  margin-bottom: -50px;
   img {
     width: 300px;
   }
@@ -52,7 +49,7 @@ input, button {
   text-align: center;
   color: #574144;
   width: 350px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   font-size: 40px;
   &--subtitle {
     font-weight: 100;
@@ -93,7 +90,7 @@ form {
     color: #f3f3f3;
     font-weight: bold;
     padding: 10px;
-    margin-top: 15px;
+    margin-top: 30px;
     width: 200px;
     outline: none;
     border: none;
@@ -227,6 +224,21 @@ form {
     flex-direction: row;
   }
 }
+.delete-userQ-form {
+  margin: 15px 0 0;
+  justify-content: flex-end;
+  border-top: 1px solid #cccccc;
+  button {
+    margin: 9px 0 0;
+    padding: 0;
+    width: 30px;
+    background: transparent;
+    align-self: self-start;
+  }
+  img {
+    width: 30px;
+  }
+}
 nav {
   position: fixed;
   bottom: 0;
@@ -294,19 +306,24 @@ form {
     width: 85%;
     height: 105px;
     padding: 12px;
-    border-radius: 5px;
+    border-radius: 3px;
     border: none;
     font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-    box-shadow: 0px 1px 4px 0px rgb(123, 56, 56);
+    box-shadow: 0px 0px 2px 0px rgba(142, 142, 142, 0.82);
   }
 }
 .btn-preview {
   background-color: transparent;
-  margin: 0 auto;
+  border: 1px solid #2f4858ed;
+  color: #2f4858ed;
+  border-radius: 5px;
+  margin: 15px auto 0;
+  padding: 5px;
   display: flex;
-  border: none;
+  justify-content: center;
   outline: none;
-  margin-top: 15px;
+  width: 97px;
+  justify-content: center;
 }
 .close-preview {
   display: none;
@@ -354,14 +371,14 @@ form {
       color: #4a4a4a;
       height: 23px;
       bottom: 0;
-      box-shadow: 0px 1px 2px 0 $blue-dark;
+      box-shadow: 0px 0px 4px 0 $blue-dark;
     }
   }
   &__selector {
     display: flex;
     justify-content: space-around;
     margin-top: 15px;
-    border-top: 1px solid #4d4d4d;
+    border-top: 1px solid #2f485830;
     position: absolute;
     width: 100%;
     box-sizing: border-box;
@@ -376,18 +393,18 @@ form {
       outline: none;
       cursor: pointer;
       &:first-of-type {
-        border-right: 1px solid #4d4d4d;
+        border-right: 1px solid $blue-dark;
       }
     }
     .not-selected {
-      border-bottom: 1px solid #4d4d4d;
+      border-bottom: 1px solid #2f485830;
     }
     .selected {
       background-color: $blue-dark;
+      border: 1px solid $blue-dark;
       color: #f3f3f3;
       font-weight: bold;
       transition: 0.5;
-      //border-bottom: 2px solid black;
     }
   }
   &__my-quotes {

@@ -26,12 +26,12 @@
         </button>
       </form>
     </div>
-    {{#if this.isInProfile}}
-      <form class="delete-userQ-form">  
-        <input type="text" value='{{this._id}}' style="display:none">
-        <button id="delete-userQ-quotes" type="submit" >Delete quote</button>
-      </form>
-    {{/if}}
   </div>
+  {{#if this.isInProfile}} 
+      <form class="delete-userQ-form">
+        <input type="text" value='{{this._id}}' style="display:none">
+        <button id="delete-userQ-quotes" type="submit"><img src="/images/bin.png" alt=""></button>
+      </form>
+  {{/if}}
 </div>
 

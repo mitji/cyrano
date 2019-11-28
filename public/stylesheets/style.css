@@ -27,7 +27,7 @@ body {
   min-height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-color: #f3f3f3;
+  background-color: #fff7f7a6;
   height: 100vh;
 }
 
@@ -53,6 +53,7 @@ input, button {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: -50px;
 }
 
 .logo-container img {
@@ -64,7 +65,7 @@ input, button {
   text-align: center;
   color: #574144;
   width: 350px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   font-size: 40px;
 }
 
@@ -128,7 +129,7 @@ form button {
   color: #f3f3f3;
   font-weight: bold;
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 30px;
   width: 200px;
   outline: none;
   border: none;
@@ -321,6 +322,28 @@ form--signup {
           flex-direction: row;
 }
 
+.delete-userQ-form {
+  margin: 15px 0 0;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  border-top: 1px solid #cccccc;
+}
+
+.delete-userQ-form button {
+  margin: 9px 0 0;
+  padding: 0;
+  width: 30px;
+  background: transparent;
+  -ms-flex-item-align: self-start;
+      -ms-grid-row-align: self-start;
+      align-self: self-start;
+}
+
+.delete-userQ-form img {
+  width: 30px;
+}
+
 nav {
   position: fixed;
   bottom: 0;
@@ -410,22 +433,29 @@ form textarea {
   width: 85%;
   height: 105px;
   padding: 12px;
-  border-radius: 5px;
+  border-radius: 3px;
   border: none;
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
-  -webkit-box-shadow: 0px 1px 4px 0px #7b3838;
-          box-shadow: 0px 1px 4px 0px #7b3838;
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(142, 142, 142, 0.82);
+          box-shadow: 0px 0px 2px 0px rgba(142, 142, 142, 0.82);
 }
 
 .btn-preview {
   background-color: transparent;
-  margin: 0 auto;
+  border: 1px solid #2f4858ed;
+  color: #2f4858ed;
+  border-radius: 5px;
+  margin: 15px auto 0;
+  padding: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   outline: none;
-  margin-top: 15px;
+  width: 97px;
+  justify-content: center;
 }
 
 .close-preview {
@@ -491,8 +521,8 @@ form textarea {
   color: #4a4a4a;
   height: 23px;
   bottom: 0;
-  -webkit-box-shadow: 0px 1px 2px 0 #2F4858;
-          box-shadow: 0px 1px 2px 0 #2F4858;
+  -webkit-box-shadow: 0px 0px 4px 0 #2F4858;
+          box-shadow: 0px 0px 4px 0 #2F4858;
 }
 
 .profile__selector {
@@ -502,7 +532,7 @@ form textarea {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-top: 15px;
-  border-top: 1px solid #4d4d4d;
+  border-top: 1px solid #2f485830;
   position: absolute;
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -526,15 +556,16 @@ form textarea {
 }
 
 .profile__selector button:first-of-type {
-  border-right: 1px solid #4d4d4d;
+  border-right: 1px solid #2F4858;
 }
 
 .profile__selector .not-selected {
-  border-bottom: 1px solid #4d4d4d;
+  border-bottom: 1px solid #2f485830;
 }
 
 .profile__selector .selected {
   background-color: #2F4858;
+  border: 1px solid #2F4858;
   color: #f3f3f3;
   font-weight: bold;
   -webkit-transition: 0.5;
