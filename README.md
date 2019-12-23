@@ -19,6 +19,7 @@ Cyrano is a social network where you can find love quotes. Users can like the qu
 - **public feed** - As a user I want to see the top rated quotes and random quotes.
 - **like quotes** - As a user I want to be able to like quotes
 - **favorite quotes** - As a user I want to be able to add my favorite quotes to my profile
+- **share quotes** - As a user I can share any quotes in WhatsApp
 - **add quote** - As a user I want to be able to add quotes to the web page
 - **edit profile** - As a user I want to be able to edit my profile
 - **profile** - As a user I want to see my quotes and my favorite quotes in my profile
@@ -58,9 +59,9 @@ User model
   password: String,
   photo: String,
   bio: String,
-  quotes: [quoteId],
-  favorites: [quoteId],
-  liked: [quoteId],  
+  quotes: [{type: Schema.Types.ObjectId, ref: 'Quote'}],
+  favorites: [{type: Schema.Types.ObjectId, ref: 'Quote'}],
+  liked: [{type: Schema.Types.ObjectId, ref: 'Quote'}], 
 }
 
 ```
@@ -72,9 +73,9 @@ Quote model
 ```javascript
 {
   text: String,
-  author: userId,
-  likes: [userId],
-  lagnuage: String,
+  author: { type: Schema.Types.ObjectId, ref: 'User'},
+  likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
+  language: String,
   type: String
 }
 
@@ -89,43 +90,53 @@ starter-code/
 ├── .gitignore
 ├── app.js
 ├── bin
+│   ├── seedQuotes.js
+│   ├── seedUsers.js
 │   └── www
+├── config
+│   └── cloudinary.js
 ├── models
-│   ├── quote.js
-│   └── user.js
+│   ├── Quote.js
+│   └── User.js
 ├── package.json
 ├── public
-│   ├── icons
+│   ├── images
+│   ├── javascripts
 │   └── stylesheets
 │       └── style.scss
 ├── routes
+│   ├── add.js
+│   ├── auth.js
+│   ├── edit-profile.js
+│   ├── home-random.js
+│   ├── home-top.js
+│   ├── home.js
 │   ├── index.js
 │   ├── login.js
-│   ├── signup.js
 │   ├── logout.js
-│   ├── user.js
-│   ├── user-edit.js
-│   └── add.js
+│   ├── profile.js
+│   ├── search.js
+│   ├── signup.js
+│   └── user-edit.js
 └── views
-    ├── auth
-    │   ├── login.hbs
+    ├── auth-views
     │   └── signup.hbs
-    ├── error.hbs
-    ├── index.hbs
     ├── layouts
-    │   ├── layout.hbs
     |		└── user-layout.hbs
     ├── user
-    │   ├── home.hbs
-    │   ├── random.hbs
-    │   ├── add.hbs
-    │   ├── profile.hbs
-    │   ├── search.hbs
-    |		└── edit-profile.hbs
-
+    │   └── partials.hbs
+    │		│   ├── homeHeader.hbs
+    │		│   ├── navbar.hbs
+    │		│   ├── quoteCard.hbs
+    │   │   ├── add.hbs
+    │   │   ├── edit-profile.hbs
+    │   │   ├── home.hbs
+    │   │   ├── profile.hbs
+    │   │   ├── search.hbs
+    │		├── error.hbs
+    │   ├── index.hbs
+    │   ├── layout.hbs
 ```
-
-
 
 
 
@@ -139,24 +150,10 @@ starter-code/
 
 ## Links
 
+[Repository Link](https://github.com/mitji/cyrano)
 
-
-### Git
-
-The url to your repository and to your deployed project
-
-[Repository Link]()
-
-[Deploy Link]()
+[Deploy Link](https://cyrano-app.herokuapp.com/)
 
 
 
-<br>
 
-
-
-### Slides
-
-The url to your presentation slides
-
-[Slides Link](https://docs.google.com/presentation/d/1P5FIi0vHZBUcgUtmt1M4_lLCO5dwdJ4UOgtJa4ehGfk/edit?usp=sharing)
